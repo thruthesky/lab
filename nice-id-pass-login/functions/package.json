@@ -7,7 +7,7 @@
     "serve": "npm run build && firebase emulators:start --only functions",
     "shell": "npm run build && firebase functions:shell",
     "start": "npm run shell",
-    "deploy": "npm run lint && firebase deploy --only functions:helloWorld",
+    "deploy": "npm run lint && firebase deploy --only functions:niceAuth,functions:niceAuthCallback",
     "logs": "firebase functions:log"
   },
   "engines": {

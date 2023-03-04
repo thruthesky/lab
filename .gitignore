@@ -2,6 +2,7 @@
 apps/
 flutter.pid
 ./keys
+keys/
 
 # Logs
 logs

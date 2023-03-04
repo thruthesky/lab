@@ -1,4 +1,10 @@
+/**
+ * Config
+ *
+ * 나이스 PASS 본인 확인 설정
+ */
 export class Config {
+  // 나이스 관리자 화면 -> 앱 상세 보기 -> 키 조회
   static clientId = "b48a6fd7-19a2-4819-8c4d-cec0a7ccf552";
   static clientSecret = "4d9f792b5d5ed8ec7a9a203d803a75e8";
 
@@ -16,5 +22,6 @@ export class Config {
   static cryptoTokenRequestUri = "/digital/niceid/api/v1.0/common/crypto/token";
 
   // 리턴 URL, 콜백 URL
-  static returnUrl = "http://localhost:3000/returnUrl";
+  static returnUrl =
+    "https://asia-northeast3-hype-9f920.cloudfunctions.net/niceAuthCallback";
 }
