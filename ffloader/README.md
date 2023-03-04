@@ -11,4 +11,5 @@ dart pub global activate flutterflow_cli
 
 
 # How to run simulator
-flutter run -d 8E7C4276-1F64-453C-AE32-422C59170B93 --pid-file=../../flutter.pid
+cd ./apps/xxx/xxx
+flutter run -d 8E7C4276-1F64-453C-AE32-422C59170B93 --pid-file=../../../flutter.pid
