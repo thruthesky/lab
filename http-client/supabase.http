@@ -1,0 +1,71 @@
+@api=https://crhqrbyjksnyqdrpqedr.supabase.co/rest/v1
+@anonKey=apiKey:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImNyaHFyYnlqa3NueXFkcnBxZWRyIiwicm9sZSI6ImFub24iLCJpYXQiOjE2NzQxODg0NDksImV4cCI6MTk4OTc2NDQ0OX0.r1Ke5LhgAYDDgBwH_4zJJaqWr_txUPWQGh3bCoIh8is
+
+
+# Error. No route.
+{{api}}
+{{anonKey}}
+
+#
+#
+#
+###
+{{api}}/nonexistent_table?id=eq.1
+{{anonKey}}
+
+
+# Get the whole rows of the table
+#
+#
+###
+{{api}}/users_public_data
+{{anonKey}}
+
+
+# Get the whole rows of the table
+#
+#
+###
+{{api}}/users_public_data?
+{{anonKey}}
+
+
+
+
+# full text search
+#
+#
+###
+{{api}}/users_public_data?display_name=wfts.심주현
+{{anonKey}}
+
+
+
+
+# full text search with pagination
+#
+#
+###
+{{api}}/users_public_data?display_name=wfts.심주현&offset=1&limit=1
+{{anonKey}}
+
+
+
+
+# websearch full text search. English.
+#
+# The query operator is word like AND, OR
+###
+{{api}}/users_public_data?display_name=wfts(english).user OR guest OR imnine
+{{anonKey}}
+
+
+
+# Phrasal full text search. English.
+#
+# 
+###
+{{api}}/users_public_data?display_name=phfts(english).apples and banana
+{{anonKey}}
+
+

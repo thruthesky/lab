@@ -1,0 +1,74 @@
+@scheme=http
+@serverUrl=withcenter.philgo.com:8108
+@apiKey=12345a
+# 시스템 상태 확인하기
+###
+{{scheme}}://{{serverUrl}}/health
+###
+GET {{scheme}}://{{serverUrl}}/health HTTP/1.1
+ 
+# 헤더 전송하는 예
+#
+# 메모리 상태 등 정보 보기
+###
+{{scheme}}://{{serverUrl}}/metrics.json
+X-TYPESENSE-API-KEY: {{apiKey}}
+ 
+# Content-Type 이 application/x-www-form-urlencoded 인 경우
+#
+###
+POST https://api.example.com/login HTTP/1.1
+Content-Type: application/x-www-form-urlencoded
+
+name=foo
+&password=bar
+
+# Content-Type 지정하는 예
+#
+###
+POST {{scheme}}://{{serverUrl}}/...
+Content-Type: application/json
+X-TYPESENSE-API-KEY: {{apiKey}}
+ 
+ 
+# HTTP 파라메타 전달 예
+#
+# GET 에서 파라메타와 헤더를 보낼 때, 맨 마지막 부분(라인)에 HEADER 라인 추가..
+###
+{{scheme}}://{{serverUrl}}/collections/books/documents/search
+?q=harry+porter
+&query_by=title
+&sort_by=ratings_count:desc
+X-TYPESENSE-API-KEY: {{apiKey}}
+ 
+# PATCH 메소드 예
+#
+###
+PATCH {{scheme}}://{{serverUrl}}/collections/movies/documents/14
+Content-Type: application/json
+X-TYPESENSE-API-KEY: {{apiKey}}
+{
+  "name": "JaeHo Song (4)"
+}
+# DELETE 메소드 예
+#
+###
+DELETE {{scheme}}://{{serverUrl}}/collections/movies/documents/14
+x-typesense-api-key: {{apiKey}}
+ 
+ 
+ 
+@apiKey=06b242850a966bb2b1b34c893476bdee
+ 
+# POST 쿼리. 바디를 맨 아래에. (헤더 밑에 빈줄 한칸), 그리고 JSON 포멧으로 입력.
+#
+# 카카오톡의 GTP-3 에 쿼리한 예제. 키는 GOGPT 신청한 프로젝트의 REST API KEY
+POST https://api.kakaobrain.com/v1/inference/kogpt/generation
+Content-Type: application/json
+Authorization: KakaoAK {{apiKey}}
+ 
+{
+   "prompt": "플러터 앱 개발",
+   "max_tokens": 120,
+   "n": 2
+}

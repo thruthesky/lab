@@ -1,0 +1,102 @@
+
+@index=https://QK6TXUC1VJ-dsn.algolia.net/1/indexes
+@id=QK6TXUC1VJ
+@key=1d7af77df2ec3c9dee57333c823c9abe
+
+# 쿼리에 빈값으로 검색. 결과는 모든 사용자 목록이다.
+# query 를 아예 생략하거나, 예) /index/users
+# query 에 값 지정을 하지 않거나, 예) /index/users?query
+# query 에 빈 문자열 값을 지정하거나, 예) /index/users?query=
+# 해도 된다.
+###
+https://8BK7RL4BM4-dsn.algolia.net/1/indexes/users?query
+X-Algolia-API-Key: ffab53a05cf682b2123533c8a028e0ee
+X-Algolia-Application-Id: 8BK7RL4BM4
+
+
+
+
+###
+https://8BK7RL4BM4-dsn.algolia.net/1/indexes/users
+?query=사용자
+&filters=gender:M
+X-Algolia-API-Key: ffab53a05cf682b2123533c8a028e0ee
+X-Algolia-Application-Id: 8BK7RL4BM4
+
+
+# 사용자 목록
+###
+GET {{index}}/users_public_data
+?query=user
+X-Algolia-API-Key: {{key}}
+X-Algolia-Application-Id: {{id}}
+
+# 사용자 목록 + 성별
+###
+GET {{index}}/users_public_data
+?query=user
+&filters=gender:M
+X-Algolia-API-Key: {{key}}
+X-Algolia-Application-Id: {{id}}
+
+# 사용자 목록 + empty filter string
+###
+GET {{index}}/users_public_data
+?query=user
+&filters=
+X-Algolia-API-Key: {{key}}
+X-Algolia-Application-Id: {{id}}
+
+
+# 사용자 목록 + 성별 + 나이. 나이는 timestamp 로 범위 검색.
+###
+GET {{index}}/users_public_data
+?query=user
+&filters=gender:M AND birthday>=945878400000 AND birthday<=945878400000
+X-Algolia-API-Key: {{key}}
+X-Algolia-Application-Id: {{id}}
+
+
+# 온라인/오프라인 상태 검색
+###
+GET {{index}}/users_public_data
+?filters=state:online
+X-Algolia-API-Key: {{key}}
+X-Algolia-Application-Id: {{id}}
+
+
+
+# 에러 !! 성별을 지정했지만, 생일 필드 값이 없다. 그래서 검색 쿼리에 오류가 발생.
+# 결과 status: 400
+# 결과 메시지: filters: Unexpected token 'AND' expected numeric at col 24
+###
+GET {{index}}/users_public_data
+?query=
+&filters=gender:M AND birthday>= AND birthday<=
+X-Algolia-API-Key: {{key}}
+X-Algolia-Application-Id: {{id}}
+
+}
+
+
+# 에러 !! 성별의 값을 지정하지 않았다. 이 처럼, filters 구문이 완전하지 않으면, 에러가 발생한다.
+###
+{{index}}/users_public_data?query=&filters=gender: AND birthday:0 TO 999978400000
+X-Algolia-API-Key: {{key}}
+X-Algolia-Application-Id: {{id}}
+
+
+# 단, query 는 empty string 으로 지정해도 된다.
+###
+{{index}}/users_public_data?query=&filters=(gender:M OR gender:F) AND birthday:0 TO 999978400000
+X-Algolia-API-Key: {{key}}
+X-Algolia-Application-Id: {{id}
+
+
+# Search - NOT WORKING
+###
+POST {{index}}/users_public_data/query
+X-Algolia-API-Key: {{key}}
+X-Algolia-Application-Id: {{id}}
+
+ { "params": "query=jaeho" }

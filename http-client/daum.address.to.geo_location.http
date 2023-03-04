@@ -1,0 +1,7 @@
+
+@url=https://dapi.kakao.com/v2/local/search/address.json
+@key=d4b43fbf2599b19b50ef43b3524f0165
+
+{{url}}
+?query=세종 국세청로 45 상가1층 B-113호
+Authorization: KakaoAK {{key}}

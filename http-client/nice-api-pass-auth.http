@@ -1,0 +1,37 @@
+@url=https://svc.niceapi.co.kr:22001
+@clientId=60728c6c-7694-41fd-a730-0062148d82ff
+@clientSecret=2c51c1fd59db5620856fa41321ecf6be
+@productID=2101979031
+
+# 먼저, 기관(고객사) 토큰 발급 요청
+#
+POST {{url}}/digital/niceid/oauth/oauth/token
+Content-Type: application/x-www-form-urlencoded
+Authorization: Basic YjQ4YTZmZDctMTlhMi00ODE5LThjNGQtY2VjMGE3Y2NmNTUyOjRkOWY3OTJiNWQ1ZWQ4ZWM3YTlhMjAzZDgwM2E3NWU4
+
+scope=default
+&grant_type=client_credentials
+
+
+#
+#
+###
+POST {{url}}/digital/niceid/api/v1.0/common/crypto/token
+Content-Type: application/json
+Authorization: bearer MzY1NTM3N2QtZjVlNy00NmU1LTgzNjEtN2IzY2RlZDQ4NjI2OjE2Nzc4MjQxNzkuNjgyOmI0OGE2ZmQ3LTE5YTItNDgxOS04YzRkLWNlYzBhN2NjZjU1Mg==
+client_id: {{clientId}}
+productID: {{productID}}
+
+{
+    "dataHeader": { "CNTY_CD": "ko" },
+    "dataBody": {
+        "req_dtm": "20230303061619",
+        "req_no": "20230303061619",
+        "enc_mode": "1"
+    }
+}
+
+#
+#
+###
+https://nice.checkplus.co.kr/CheckPlusSafeModel/service.cb?m=service&token_version_id=20230304022858B5-NCF3CA611-64BB3-GA7CBFC1A7&enc_data=EyG2minQpC6+zIUlapcwbuAuijwQ9IccceMxBMvU10tOF9axNzsqM8CkJuqJz7U+Mpk8pm2tkDIXFd3FIEfULkQNpB2b9H0sS4PqhmekeHYXTJt+erCXgCM9JGPWfb85ppUWHcx+6BjN0Mjq3t5fbSNImkGl9dZEP88WYLOeet3FIllXOwkXYYjab6DjaqTLbJThNdt+wmA/XNIR7MEG1kR5mzjAzMv5c5l8cwCddpn66eIhrRSvOnl5/zeABcsNqobYxeuIh+XJ5SdeApLeHaDx328OaHQlDeTLGw9GcjI=&integrity_value=jMuLI7DlhLc1eaiunJ+wFG9+YWr0NMBgenOfRDBmTbw=
