@@ -1,4 +1,4 @@
-import { NiceApi } from "../src/nice";
+import { NiceApi } from "../src/nice-api";
 
 // 실행
 doWork();
