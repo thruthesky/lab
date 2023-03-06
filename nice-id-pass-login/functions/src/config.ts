@@ -11,8 +11,15 @@ export class Config {
   // 나이스 관리자 화면 -> 앱 상세 보기 -> 구성 상품 -> 상품 코드
   static productID = "2101979031";
 
-  // 기관(가맹사) 액세스 토큰
+  // 기관(가맹사) 액세스 토큰. 50 년 동안 유효하다. 즉, 한번만 호출해서, 그 값을 재 사용하면 된다.
   static accessToken = "3655377d-f5e7-46e5-8361-7b3cded48626";
+
+  // 암후화 토큰은 최대 1 시간까지 유효.
+  // 즉, 최대 1 시간 동안 암호화 토큰을 재 활용 할 수 있다.
+  // Nice API 를 통해서 암호화 토큰을 요청하지 않고, Firestore 에 저장해 놓으면 보다 빠르게
+  // 재 활용 할 수 있다.
+  // 이 값을 최대 3600 으로 하면 된다.
+  static cryptoTokenRequestInterval = 1; // 60 * 50; // 60 * 50 = 50분.
 
   static apiUrl = "https://svc.niceapi.co.kr:22001";
   // access token 요청 uri

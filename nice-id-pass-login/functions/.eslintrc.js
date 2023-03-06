@@ -27,5 +27,6 @@ module.exports = {
     "import/no-unresolved": 0,
     "valid-jsdoc": 0,
     "camelcase": 0,
+    "max-len": 0,
   },
 };

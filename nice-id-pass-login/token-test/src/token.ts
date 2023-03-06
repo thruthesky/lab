@@ -30,7 +30,7 @@ async function doWork() {
 
   const cryptoToken = await requestCryptToken(companyAccessToken);
 
-  console.log("crypto token body:", cryptoToken.dataBody);
+  console.log("equest crypto token result -> body:", cryptoToken.dataBody);
 
   const symmetricKey = generateSymmetricKey(cryptoToken.dataBody.token_val);
 
