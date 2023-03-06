@@ -22,10 +22,31 @@ export const niceAuth = functions
       NiceApi.generateSymmetricKey(auth);
       const encrypted = NiceApi.encryptData(auth);
       const integrity_value = await NiceApi.hmac256(encrypted, auth);
-      const url = `https://nice.checkplus.co.kr/CheckPlusSafeModel/service.cb?m=service&token_version_id=${auth.crypto.dataBody.token_version_id}&enc_data=${encrypted}&integrity_value=${integrity_value}`;
+      // const url = `https://nice.checkplus.co.kr/CheckPlusSafeModel/service.cb?m=service&token_version_id=${auth.crypto.dataBody.token_version_id}&enc_data=${encrypted}&integrity_value=${integrity_value}`;
 
-      response.redirect(url);
-    //   response.send("Hello from Firebase!" + JSON.stringify(cryptoToken));
+      // response.redirect(url);
+
+      response.send(`
+<html>
+<body>
+<form name="form_chk" id="form_chk" method="get" action="https://nice.checkplus.co.kr/CheckPlusSafeModel/checkplus.cb">
+    <input type="hidden" id="m" name="m" value="service" />
+    <input type="hidden" id="token_version_id" name="token_version_id" value="${auth.crypto.dataBody.token_version_id}" />
+    <input type="hidden" id="enc_data" name="enc_data" value="${encrypted}" />
+    <input type="hidden" id="integrity_value" name="integrity_value" value="${integrity_value}" />
+    <!--<a href="javascript:fnSubmit();"> CheckPlus 안심본인인증 Click</a>-->
+</form>
+<script language='javascript'>
+    function fnSubmit(){
+        document.form_chk.submit();
+    }
+    window.addEventListener("load", (event) => {
+      document.form_chk.submit();
+    });
+</script>
+</body>
+</html>
+    `);
     });
 
 export const niceAuthCallback = functions

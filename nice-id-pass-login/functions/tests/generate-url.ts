@@ -37,7 +37,4 @@ async function doWork() {
 
   // Opens the URL in the default browser.
   await open(url);
-
-  // const res = await axios.get(url);
-  // console.log("res: ", res.data);
 }

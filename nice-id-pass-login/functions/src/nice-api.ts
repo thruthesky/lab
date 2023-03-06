@@ -43,7 +43,6 @@ export class NiceApi {
       scope: "default",
     });
 
-    console.log("base64", bearer64);
     const res = await axios.post(
         `${Config.apiUrl}${Config.accessTokenRequestUri}`,
         params,
@@ -70,9 +69,7 @@ export class NiceApi {
     // 시간 값은 한국 시간 값이어야 한다. UTC+0 으로 하면 안된다.
     const koreanDate = new Date(new Date().getTime() + 9 * 60 * 60 * 1000);
 
-    // 캐시된 암호화 토큰이 있으면 캐시된 암호화 토큰을 사용해야 한다.
-    // 너무 빨리/자주 암호화 토큰을 요청하면 본인 인증 (복호화) 오류가 발생한다.
-
+    // 캐시된 암호화 토큰이 있으면 캐시된 암호화 토큰을 사용한다.
     const docSnapshot = await this.docRef().get();
     if (docSnapshot.exists) {
       const cache = docSnapshot.data() as AuthData;
@@ -98,9 +95,7 @@ export class NiceApi {
         .slice(0, 14);
 
     const seconds: number = Math.round(koreanDate.getTime() / 1000);
-
     const requestNo = "REQ" + (koreanDate.getTime() + "").padStart(27, "0");
-
     const authorizationSourceKey =
       access_token + ":" + seconds + ":" + Config.clientId;
 
