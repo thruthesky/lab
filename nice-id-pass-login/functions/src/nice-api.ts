@@ -16,15 +16,6 @@ import { AccessToken, AuthData, SymmetricKey } from "./interfaces";
  */
 export class NiceApi {
   /**
-   * Thsi is the cache document reference.
-   * @returns the cache document reference
-   */
-  static docRef(): admin.firestore.DocumentReference {
-    const db = admin.firestore();
-    const docRef = db.collection("tmp").doc("nice-api");
-    return docRef;
-  }
-  /**
    * 기관 토큰은 한번 발급 받으면 50년간 쓸 수 있다. 즉, 영구적으로 쓸 수 있으므로, 한번만 받아서 캐시하거나,
    * 소스코드에 넣어 놓는다.
    * @returns 기관 토큰 (고객사 토큰)
@@ -68,24 +59,6 @@ export class NiceApi {
   static async requestCryptToken(access_token: string): Promise<AuthData> {
     // 시간 값은 한국 시간 값이어야 한다. UTC+0 으로 하면 안된다.
     const koreanDate = new Date(new Date().getTime() + 9 * 60 * 60 * 1000);
-
-    // 캐시된 암호화 토큰이 있으면 캐시된 암호화 토큰을 사용한다.
-    const docSnapshot = await this.docRef().get();
-    if (docSnapshot.exists) {
-      const cache = docSnapshot.data() as AuthData;
-      if (cache) {
-        const now = new Date();
-        const timestamp = cache.timestamp as admin.firestore.Timestamp;
-        console.log(timestamp);
-        const diff = now.getTime() - timestamp.toMillis();
-        const diffSeconds = diff / 1000;
-
-        if (diffSeconds < Config.cryptoTokenRequestInterval) {
-          cache.cached = true;
-          return cache;
-        }
-      }
-    }
 
     // Get date string of YYYYMMDDHHmmss
     const dateTime: string = koreanDate
@@ -243,16 +216,11 @@ export class NiceApi {
    * @param hmac_key Hmac Key
    * @returns 무결성 검증을 위한 HMAC
    */
-  static async hmac256(encrypted: string, auth: AuthData): Promise<string> {
+  static hmac256(encrypted: string, auth: AuthData): string {
     const hmac = createHmac("sha256", auth.symmetricKey.hmac_key)
       .update(encrypted)
       .digest("base64");
-    if (auth.cached == false) {
-      auth.integrity_value = hmac;
-      await this.docRef().set(auth);
-    } else {
-      console.log("--------> Don't update cache.");
-    }
+
     return hmac;
   }
 }

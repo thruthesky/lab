@@ -11,8 +11,6 @@ admin.initializeApp({
 doWork();
 
 async function doWork() {
-  Config.cryptoTokenRequestInterval = 1;
-
   // const accessToken = await requestAccessToken();
   const companyAccessToken = "3655377d-f5e7-46e5-8361-7b3cded48626"; // accessToken.dataBody.access_token;
 
@@ -25,7 +23,7 @@ async function doWork() {
   const encrypted = NiceApi.encryptData(auth);
   const detrypted = NiceApi.decryptData(encrypted, auth);
 
-  const integrity_value = await NiceApi.hmac256(encrypted, auth);
+  const integrity_value = NiceApi.hmac256(encrypted, auth);
 
   const url = `https://nice.checkplus.co.kr/CheckPlusSafeModel/service.cb?m=service&token_version_id=${auth.crypto.dataBody.token_version_id}&enc_data=${encrypted}&integrity_value=${integrity_value}`;
 

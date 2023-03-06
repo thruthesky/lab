@@ -21,7 +21,7 @@ export const niceAuth = functions
     const auth = await NiceApi.requestCryptToken(Config.accessToken);
     NiceApi.generateSymmetricKey(auth);
     const encrypted = NiceApi.encryptData(auth);
-    const integrity_value = await NiceApi.hmac256(encrypted, auth);
+    const integrity_value = NiceApi.hmac256(encrypted, auth);
     // const url = `https://nice.checkplus.co.kr/CheckPlusSafeModel/service.cb?m=service&token_version_id=${auth.crypto.dataBody.token_version_id}&enc_data=${encrypted}&integrity_value=${integrity_value}`;
     // response.redirect(url);
 
