@@ -16,8 +16,10 @@ import { AccessToken, AuthData, SymmetricKey } from "./interfaces";
  */
 export class NiceApi {
   /**
-   * 기관 토큰은 한번 발급 받으면 50년간 쓸 수 있다. 즉, 영구적으로 쓸 수 있으므로, 한번만 받아서 캐시하거나,
-   * 소스코드에 넣어 놓는다.
+   * 기관 토큰은 한번 발급 받으면 50년간 쓸 수 있다.
+   *
+   * 맨 처음 테스트 할 때, access_token 을 받아서, Config.accessToken 에 저장을 해 놓는다.
+   * 즉, 영구적으로 쓸 수 있으므로, 한번만 받아서 소스코드에 넣어 놓으면 된다.
    * @returns 기관 토큰 (고객사 토큰)
    */
   static async requestAccessToken(): Promise<AccessToken> {
@@ -117,6 +119,7 @@ export class NiceApi {
   /**
    * 대칭키 생성.
    *
+   * 암호화 토큰의 token_val 값을 사용하여 대칭키를 생성한다.
    * Sha256 로 해시를 생성하고, 16 바이트 키와 32 바이트 HMAC 키, 16 바이트 IV 를 생성한다.
    *
    * @param password 비밀번호
@@ -147,7 +150,7 @@ export class NiceApi {
   }
 
   /**
-   * 대칭키를 사용하여 요청 데이터를 대칭 암호화한다.
+   * 대칭키를 사용하여 요청 데이터(return url 등의 요청 값)를 대칭 암호화한다.
    *
    * @param cryptoToken 암호화 토큰 요청에서 받은 결과
    * @param symmetricKey 대칭키
@@ -193,6 +196,9 @@ export class NiceApi {
   /**
    * encryptData() 함수로 암호화된 데이터를 복호화한다.
    *
+   * 나이스 PASS 본인 확인 API 로 부터, (사용자가 본인 확인 후) 결과 값을 복호화 할 때 사용.
+   * 참고, ./tests/generate-url.ts 에 복호화 하는 예제가 있음.
+   *
    * @param encrypted 암호화 된 데이터(문자열)
    * @param symmetricKey 대칭키
    * @returns 복호화된 데이터(문자열)
@@ -211,7 +217,10 @@ export class NiceApi {
   }
 
   /**
+   * 암호화된 데이터를 가지고 무결성 검증을 위한 HMAC 값을 생성한다.
+   *
    * Hmac 무결성 검증을 위한 integrity_value (HMAC 검증을 위한 값) 값을 리턴한다.
+   *
    * @param encrypted 인코딩된 데이터
    * @param hmac_key Hmac Key
    * @returns 무결성 검증을 위한 HMAC
