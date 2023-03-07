@@ -5,6 +5,23 @@
   "version": "0.2.0",
   "configurations": [
     {
+      "name": "Hype Talk - A045",
+      "cwd": "apps/hype-talk-tog63b/hype_talk",
+      "request": "launch",
+      "type": "dart",
+      "program": "lib/main.dart",
+      "deviceId": "R9ATA00LMJM"
+    },
+    {
+      "name": "FreeEx attach",
+      "cwd": "apps/free-expression-k5451h/free_expression",
+      "request": "attach",
+      "type": "dart",
+      "program": "lib/main.dart",
+      "deviceId": "8E7C4276-1F64-453C-AE32-422C59170B93",
+      "args": ["--app-id", "com.withcenter.freeex"]
+    },
+    {
       "name": "Philgo attach",
       "cwd": "phil-go-forum-42riti/phil_go_forum",
       "request": "attach",
@@ -73,6 +90,15 @@
       "program": "lib/main.dart",
       "deviceId": "iPhone11MaxPro",
       "flutterMode": "release"
+    },
+    {
+      "name": "How About Here -A045F",
+      "cwd": "how-about-here-9uu437/how_about_here",
+      "request": "launch",
+      "type": "dart",
+      "program": "lib/main.dart",
+      "deviceId": "R9ATA00LMJM",
+      "flutterMode": "debug"
     },
     {
       "name": "Nurse",

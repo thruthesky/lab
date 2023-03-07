@@ -1,4 +1,3 @@
-import * as admin from "firebase-admin";
 import axios from "axios";
 import {
   createHash,
@@ -7,7 +6,7 @@ import {
   createHmac,
 } from "node:crypto";
 import { Config } from "./config";
-import { AccessToken, AuthData, SymmetricKey } from "./interfaces";
+import { AccessToken, AuthData, SymmetricKey } from "./nice-api.interfaces";
 
 /**
  * Nice API
@@ -109,7 +108,6 @@ export class NiceApi {
     auth.requestCryptoAuthorizationBearer64 = bearer64;
     auth.requestCryptoTokenHeaders = headers;
     auth.requestCrytoBody = params;
-    auth.timestamp = admin.firestore.FieldValue.serverTimestamp();
     auth.dateTime = dateTime;
     auth.requestNo = requestNo;
 
