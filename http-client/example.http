@@ -1,6 +1,6 @@
 @scheme=http
 @serverUrl=withcenter.philgo.com:8108
-@apiKey=12345a
+@apiKey=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 # 시스템 상태 확인하기
 ###
 {{scheme}}://{{serverUrl}}/health

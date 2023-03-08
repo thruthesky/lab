@@ -1,6 +1,6 @@
 @url=https://svc.niceapi.co.kr:22001
-@clientId=60728c6c-7694-41fd-a730-0062148d82ff
-@clientSecret=2c51c1fd59db5620856fa41321ecf6be
+@clientId=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+@clientSecret=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 @productID=2101979031
 
 # 먼저, 기관(고객사) 토큰 발급 요청

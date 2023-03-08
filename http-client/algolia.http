@@ -1,7 +1,7 @@
 
 @index=https://QK6TXUC1VJ-dsn.algolia.net/1/indexes
 @id=QK6TXUC1VJ
-@key=1d7af77df2ec3c9dee57333c823c9abe
+@key=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 
 # 쿼리에 빈값으로 검색. 결과는 모든 사용자 목록이다.
 # query 를 아예 생략하거나, 예) /index/users
