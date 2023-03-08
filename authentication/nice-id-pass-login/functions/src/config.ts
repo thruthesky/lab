@@ -29,7 +29,7 @@ export class Config {
   // Deep Link 가 훨씬 부드럽게 잘 동작하는데, 2023년 3월 8일 기준, iOS 는 땜빵으로 동자하지만, Android 는 동작하지 않는다.
   // 그래서 Android 는 Dyanmic Link 를 사용한다. 어차피, Android 에서는 Dynamic Link 가 부드럽게 동작한다.
   static androidUrl =
-    "https://hypetalk.page.link/?link=https://hypetalk.page.link/niceAuthCallback/?apn=com.withcenter.hypetalk&token=";
+    "https://hypetalk.page.link/?apn=com.withcenter.hypetalk&link=https://hypetalk.page.link/niceAuthCallback/?token=";
   static iosUrl =
     "com.withcenter.hypetalk://hypetalk.page.link/niceAuthCallback/?token=";
 
