@@ -45,13 +45,8 @@ export const niceAuth = functions
     <input type="hidden" id="token_version_id" name="token_version_id" value="${auth.crypto.dataBody.token_version_id}" />
     <input type="hidden" id="enc_data" name="enc_data" value="${encrypted}" />
     <input type="hidden" id="integrity_value" name="integrity_value" value="${integrity_value}" />
-
-    <!--<a href="javascript:fnSubmit();"> CheckPlus 안심본인인증 Click</a>-->
 </form>
 <script language='javascript'>
-    function fnSubmit(){
-        document.form_chk.submit();
-    }
     window.addEventListener("load", (event) => {
       document.form_chk.submit();
     });
@@ -112,15 +107,19 @@ export const niceAuthCallback = functions
     Config.trace("url", url);
 
     // 인증 & 복호화 & 회원 가입 or 로그인 후, 앱/웹으로 이동 할 때, URL redirect 한다.
-    // 참고, 표준인증창 열 때는, redirect 를 하면 오류가 많이 난다.
-    // response.redirect(url);
-    response.send(`
+    // 참고, 인증을 시작 할 때, 표준인증창 열 때는, redirect 를 하면 오류가 많이 난다.
+    //
+    response.redirect(url);
+
+    // 주의, In-App Browser 로 실행을 하면 동작하지 않는다. 반드시 iOS 에서 external browser 로 실행을 해야 한다.
+    /*
+      response.send(`
     <!DOCTYPE html>
     <html>
       <head>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Centered Button Example</title>
         <style>
-          /* Center the button horizontally and vertically */
           .center {
             display: flex;
             justify-content: center;
@@ -128,8 +127,7 @@ export const niceAuthCallback = functions
             height: 100vh;
             font-family: AppleGothic, 'Malgun Gothic', 'Noto Sans KR', sans-serif;
           }
-          
-          /* Style the button */
+
           .btn {
             background-color: #1c291c;
             color: white;
@@ -139,19 +137,20 @@ export const niceAuthCallback = functions
             cursor: pointer;
             font-size: 16px;
           }
-          
-          /* On hover, darken the button slightly */
+
           .btn:hover {
             background-color: #dfdfdf;
             color: black;
           }
         </style>
-        
+
         <script>
-          location.href = "${url}";
+          // location.href = "${url}";
         </script>
       </head>
       <body>
+      <form name="form_chk" id="form_chk" method="get" action="${url}">
+      </form>
         <div class="center">
           <a href="${url}" style="display: block; text-decoration: none;">
             <div style="text-align: center;">
@@ -160,7 +159,13 @@ export const niceAuthCallback = functions
               </div>
           </a>
         </div>
+        <script language='javascript'>
+            window.addEventListener("load", (event) => {
+              document.form_chk.submit();
+            });
+        </script>
       </body>
     </html>
           `);
+          */
   });
