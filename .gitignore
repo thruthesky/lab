@@ -3,6 +3,7 @@ apps/
 flutter.pid
 ./keys
 keys/
+**/*/keys/
 
 **/*/.DS_Store
 
