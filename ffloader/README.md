@@ -31,7 +31,16 @@ The `key-file.txt` is the file that has the FlutterFlow API key like below.
 
 ## How to run simulator
 
+- Run in iOS Simulator. The device id is `8E7C4276-1F64-453C-AE32-422C59170B93`.
+
 ```sh
 cd ./apps/xxx/xxx
 flutter run -d 8E7C4276-1F64-453C-AE32-422C59170B93 --pid-file=../../../flutter.pid
+```
+
+- Run in Chrome browser.
+
+```sh
+cd ./apps/xxx/xxx
+flutter run -d chrome --pid-file=../../../flutter.pid
 ```

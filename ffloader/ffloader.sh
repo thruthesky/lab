@@ -20,7 +20,7 @@ while true
 do
   now=`date`
   echo "--> $now Done. Enter to reload again."
-  read key
+  read enterKey
   echo "--> Downloading without assets..."
   SECONDS=0
   flutterflow export-code --project $2 --dest ./apps/$2 --no-include-assets --token $key
