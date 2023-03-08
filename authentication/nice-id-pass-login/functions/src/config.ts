@@ -1,3 +1,4 @@
+import NiceApiKey from "../keys/nice-api-key";
 /**
  * Config
  *
@@ -13,11 +14,11 @@ export class Config {
 
   // 모든 나이스 PASS 본인 확인 앱을 개발 할 때, clientId 와 clientSecret 을 관리자 페이지에서 항상 가져와야 한다.
   // 나이스 관리자 화면 -> 앱 상세 보기 -> 키 조회
-  static clientId = "b48a6fd7-19a2-4819-8c4d-cec0a7ccf552";
-  static clientSecret = "4d9f792b5d5ed8ec7a9a203d803a75e8";
+  static clientId = NiceApiKey.clientId;
+  static clientSecret = NiceApiKey.clientSecret;
 
   // 기관(가맹사) 액세스 토큰. 50 년 동안 유효하다. 즉, 한번만 호출해서, 그 값을 재 사용하면 된다.
-  static accessToken = "3655377d-f5e7-46e5-8361-7b3cded48626";
+  static accessToken = NiceApiKey.accessToken;
 
   // 리턴 URL, 콜백 URL. 프로젝트 마다 적절히 수정해야 한다. 특히, domain(host) 부분.
   static returnUrl = Config.local ?
