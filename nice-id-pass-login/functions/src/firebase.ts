@@ -74,7 +74,8 @@ export class Firebase {
           this.userDoc(userRecord.uid).set({
             uid: userRecord.uid,
             email: "",
-            display_name: "",
+            name: user.name,
+            display_name: user.name,
             phone_number: user.phone_number,
             photo_url: "",
             created_time: admin.firestore.FieldValue.serverTimestamp(),

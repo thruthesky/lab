@@ -4,6 +4,8 @@ flutter.pid
 ./keys
 keys/
 
+**/*/.DS_Store
+
 # Logs
 logs
 *.log
