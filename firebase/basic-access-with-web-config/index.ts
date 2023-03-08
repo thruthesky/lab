@@ -9,12 +9,12 @@ import {
 // TODO: Replace the following with your app's Firebase project configuration
 
 const firebaseConfig = {
-  apiKey: "AIzaSyDVlpwNvvTgJ6oHAIazmVfYcI8scH7ibPE",
-  authDomain: "withcenter-project.firebaseapp.com",
-  projectId: "withcenter-project",
-  storageBucket: "withcenter-project.appspot.com",
+  apiKey: "-------------H7ibPE",
+  authDomain: "---------.firebaseapp.com",
+  projectId: "---------",
+  storageBucket: "---------.appspot.com",
   messagingSenderId: "1036885997348",
-  appId: "1:1036885997348:web:0f1bc7f7ccc8db460725b1",
+  appId: "1:103688---------------db460725b1",
 };
 
 const app = initializeApp(firebaseConfig);

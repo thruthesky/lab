@@ -9,12 +9,12 @@ import {
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyDFftOCp56XpeV9dM3mJbd95L7W_a19BzI",
-  authDomain: "withcenter-kmeet.firebaseapp.com",
-  projectId: "withcenter-kmeet",
-  storageBucket: "withcenter-kmeet.firebaseapp.com",
+  apiKey: "AIza-------------a19BzI",
+  authDomain: "----------.firebaseapp.com",
+  projectId: "----------",
+  storageBucket: "----------.firebaseapp.com",
   messagingSenderId: "817502397544",
-  appId: "1:872385163952:web:217e415c89d6f984908175",
+  appId: "1:87238516------------984908175",
 };
 
 // Initialize Firebase
