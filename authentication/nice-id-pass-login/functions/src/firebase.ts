@@ -84,6 +84,7 @@ export class Firebase {
             display_name: user.name,
             birthday: user.birthday,
             gender: user.gender,
+            userDocumentReference: this.userDoc(userRecord.uid),
           }),
         ];
         await Promise.all(promises);
