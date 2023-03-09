@@ -81,10 +81,11 @@ export class Firebase {
             created_time: admin.firestore.FieldValue.serverTimestamp(),
           }),
           this.userPublicDoc(userRecord.uid).set({
-            display_name: user.name,
+            displayName: user.name,
             birthday: user.birthday,
             gender: user.gender,
             userDocumentReference: this.userDoc(userRecord.uid),
+            registeredA: admin.firestore.FieldValue.serverTimestamp(),
           }),
         ];
         await Promise.all(promises);
