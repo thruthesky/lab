@@ -14,6 +14,15 @@
       "args": ["--app-id", "com.mycompany.test"]
     },
     {
+      "name": "Hype Talk - attach",
+      "cwd": "apps/hype-talk-tog63b/hype_talk",
+      "request": "attach",
+      "type": "dart",
+      "program": "lib/main.dart",
+      "deviceId": "8E7C4276-1F64-453C-AE32-422C59170B93",
+      "args": ["--app-id", "com.withcenter.hypetalk"]
+    },
+    {
       "name": "Hype Talk - debug - A045",
       "cwd": "apps/hype-talk-tog63b/hype_talk",
       "request": "launch",
