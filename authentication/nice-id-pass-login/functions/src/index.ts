@@ -77,7 +77,10 @@ export const niceAuthCallback = functions
       auth
       );
       const json = JSON.parse(decrypted);
-      Config.trace("json: ", json);
+      Config.trace(
+          "index.ts::niceAuthCallback(); Decrypted data in json: ",
+          json
+      );
 
       const data = {
         display_name: "",
@@ -87,7 +90,10 @@ export const niceAuthCallback = functions
         gender: json.gender == "1" ? "M" : "F",
       } as UserData;
 
-      Config.trace("niceAuthCallback() -> descrypted data;", data);
+      Config.trace(
+          "index.ts::niceAuthCallback(); -> going to create or login with data;",
+          data
+      );
       const user = await Firebase.createUser(data);
 
       const customToken = await admin.auth().createCustomToken(user.uid);
