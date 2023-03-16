@@ -51,3 +51,10 @@ flutter run -d chrome --pid-file=../../../flutter.pid
 ```sh
 flutter run -d 00008030-000904C80290802E --pid-file=../../../flutter.pid
 ```
+
+
+## Use multikey and auto re-download
+
+```sh
+./multi.sh free-expression-k5451h
+```
