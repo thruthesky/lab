@@ -1,7 +1,7 @@
 import * as admin from "firebase-admin";
-import {UserRecord} from "firebase-admin/auth";
-import {Config} from "./config";
-import {UserData} from "./firebase.interface";
+import { UserRecord } from "firebase-admin/auth";
+import { Config } from "./config";
+import { UserData } from "./firebase.interface";
 
 /**
  * Firebase 관련 함수
@@ -36,9 +36,9 @@ export class Firebase {
    */
   static userPublicDoc(uid: string): admin.firestore.DocumentReference {
     return admin
-        .firestore()
-        .collection(Config.userPublicDataCollectionName)
-        .doc(uid);
+      .firestore()
+      .collection(Config.userPublicDataCollectionName)
+      .doc(uid);
   }
 
   /**
@@ -67,6 +67,16 @@ export class Firebase {
           phoneNumber: user.phone_number,
         });
 
+        const birthday = user.birthday.toString();
+
+        const dateOfBirthday = new Date(
+          birthday.substring(0, 4) +
+            "-" +
+            birthday.substring(4, 6) +
+            "-" +
+            birthday.substring(6, 8)
+        );
+
         // 사용자 정보를 저장(생성)한다.
         // users collection 하나만 쓰면, 공개 문서 컬렉션도 users collection 으로 지정하면 된다.
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -80,9 +90,10 @@ export class Firebase {
             photo_url: "",
             created_time: admin.firestore.FieldValue.serverTimestamp(),
           }),
+
           this.userPublicDoc(userRecord.uid).set({
             displayName: user.name,
-            birthday: user.birthday,
+            birthday: dateOfBirthday,
             gender: user.gender,
             userDocumentReference: this.userDoc(userRecord.uid),
             registeredA: admin.firestore.FieldValue.serverTimestamp(),

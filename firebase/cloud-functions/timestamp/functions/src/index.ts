@@ -2,8 +2,8 @@
 // admin.initializeApp();
 // const db = admin.firestore();
 
-const birthday = "19731016";
-
+const n = 19731016;
+const birthday = n.toString();
 const dateOfBirthday = new Date(
   birthday.substring(0, 4) +
     "-" +
