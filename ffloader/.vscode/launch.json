@@ -14,12 +14,21 @@
       "args": ["--app-id", "com.mycompany.test"]
     },
     {
-      "name": "Hype Talk - attach",
+      "name": "Hype Talk - attach to Simulator",
       "cwd": "apps/hype-talk-tog63b/hype_talk",
       "request": "attach",
       "type": "dart",
       "program": "lib/main.dart",
       "deviceId": "8E7C4276-1F64-453C-AE32-422C59170B93",
+      "args": ["--app-id", "com.withcenter.hypetalk"]
+    },
+    {
+      "name": "Hype Talk - attach to iPhone11MaxPro",
+      "cwd": "apps/hype-talk-tog63b/hype_talk",
+      "request": "attach",
+      "type": "dart",
+      "program": "lib/main.dart",
+      "deviceId": "00008030-000904C80290802E",
       "args": ["--app-id", "com.withcenter.hypetalk"]
     },
     {

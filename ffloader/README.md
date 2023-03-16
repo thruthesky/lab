@@ -19,7 +19,8 @@ ffloader.sh [key-file] [project-id]
 - example
 
 ```sh
-./ffloader.sh ./key-file.txt phi-lov-w6liu7
+./ffloader.sh ../keys/fireflow-api-key phi-lov-w6liu7
+./ffloader.sh ../keys/fireflow-api-key hype-talk-tog63b
 ```
 
 The `key-file.txt` is the file that has the FlutterFlow API key like below.
@@ -43,4 +44,10 @@ flutter run -d 8E7C4276-1F64-453C-AE32-422C59170B93 --pid-file=../../../flutter.
 ```sh
 cd ./apps/xxx/xxx
 flutter run -d chrome --pid-file=../../../flutter.pid
+```
+
+- Run on iPhone11MaxPro (real device)
+
+```sh
+flutter run -d 00008030-000904C80290802E --pid-file=../../../flutter.pid
 ```
