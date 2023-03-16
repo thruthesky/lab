@@ -1,8 +1,15 @@
-import * as admin from "firebase-admin";
-admin.initializeApp();
-const db = admin.firestore();
+// import * as admin from "firebase-admin";
+// admin.initializeApp();
+// const db = admin.firestore();
 
-(async () => {
-  const snapshot = await db.collection("users").get();
-  snapshot.docs.map((doc) => console.log(doc.data()));
-})();
+const birthday = "19731016";
+
+const dateOfBirthday = new Date(
+  birthday.substring(0, 4) +
+    "-" +
+    birthday.substring(4, 6) +
+    "-" +
+    birthday.substring(6, 8)
+);
+
+console.log(dateOfBirthday.toDateString());
