@@ -12,4 +12,4 @@
 # Test
 
 - Gogogo
-<a href="com.withcenter.hypetalk://hypetalk.page.link/niceAuthCallback/?token=abc">The internal link</a> oo
+[The internal link](com.withcenter.hypetalk://hypetalk.page.link/niceAuthCallback/?token=abc) oo
