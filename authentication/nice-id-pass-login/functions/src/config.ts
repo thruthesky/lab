@@ -21,23 +21,19 @@ export class Config {
   static accessToken = NiceApiKey.accessToken;
 
   // 리턴 URL, 콜백 URL. 프로젝트 마다 적절히 수정해야 한다. 특히, domain(host) 부분.
-  static returnUrl = Config.local ?
-    "http://localhost:5001/hype-9f920/asia-northeast3/niceAuthCallback" :
-    "https://asia-northeast3-hype-9f920.cloudfunctions.net/niceAuthCallback";
+  // 웹 표준 인증 창에서 인증을 한 다음, 인증 정보를 받을 callback url.
+  // 이 함수에서 인증 정보를 받아서, 복호화 하여 Custom Token 을 생성한다.
+  static returnUrl = Config.local
+    ? "http://localhost:5001/hype-9f920/asia-northeast3/niceAuthCallback"
+    : "https://asia-northeast3-hype-9f920.cloudfunctions.net/niceAuthCallback";
 
-  // 앱을 열기 위한, Deep Link URL.
-  // iOS 에서 prefix 가 들어가면 잘 동작하지 않는다. 이 부분 확인이 필요하다.
+  // niceAuthCallback 에서 사용자 정보 복호화 후, Custom token 으로 앱을 열기 위한, Deep Link URL.
+  // Link 생성 참조: https://docs.google.com/document/d/1jJnrcPuSWBTzmSQE6y4gz3pO8F743gPy1JO9sNOQiCU/edit#heading=h.4bz1aeelm7q6
   // `PatchToken` 에 토큰이 들어간다.
   // 모든 것이 성공적으로 인증되면, 앱의 /afterNiceAuth route 로 접속을 한다.
-  static androidUrl =
-    "https://hypetalk.page.link/?link=https://hypetalk.page.link/afterNiceAuth/?token%3DPatchToken&apn=com.withcenter.hypetalk&isi=6446163804&ibi=com.withcenter.hypetalk&st=Auth+Callback&sd=Nice+Auth+Callback+URL&efr=1";
-  static iosUrl =
-    "https://hypetalk.page.link/?link=https://hypetalk.page.link/afterNiceAuth/?token%3DPatchToken&apn=com.withcenter.hypetalk&isi=6446163804&ibi=com.withcenter.hypetalk&st=Auth+Callback&sd=Nice+Auth+Callback+URL&efr=1";
-  // "com.withcenter.hypetalk://hypetalk.page.link/niceAuthCallback/?token=";
-
-  static webUrl = Config.local ?
-    "http://localhost:53538/afterNiceAuth/?token=" :
-    "https://hypetalk.flutterflow.app/afterNiceAuth/?token=";
+  static dynamicLink = Config.local
+    ? "http://localhost:53538/afterNiceAuth/?token="
+    : "https://hypetalk.page.link/?link=https://hypetalk.page.link/afterNiceAuth/?token%3DPatchToken&apn=com.withcenter.hypetalk&isi=6446163804&ibi=com.withcenter.hypetalk&st=Auth+Callback&sd=Nice+Auth+Callback+URL&efr=1";
 
   //
   // -- 아래는 경우에 따라서 수정해야 한다. --
