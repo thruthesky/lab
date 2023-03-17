@@ -11,5 +11,3 @@
 
 # Test
 
-- Gogogo
-[The internal link](com.withcenter.hypetalk://hypetalk.page.link/niceAuthCallback/?token=abc) oo

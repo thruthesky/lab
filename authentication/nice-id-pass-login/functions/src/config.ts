@@ -21,9 +21,9 @@ export class Config {
   static accessToken = NiceApiKey.accessToken;
 
   // 리턴 URL, 콜백 URL. 프로젝트 마다 적절히 수정해야 한다. 특히, domain(host) 부분.
-  static returnUrl = Config.local ?
-    "http://localhost:5001/hype-9f920/asia-northeast3/niceAuthCallback" :
-    "https://asia-northeast3-hype-9f920.cloudfunctions.net/niceAuthCallback";
+  static returnUrl = Config.local
+    ? "http://localhost:5001/hype-9f920/asia-northeast3/niceAuthCallback"
+    : "https://asia-northeast3-hype-9f920.cloudfunctions.net/niceAuthCallback";
 
   // 앱을 열기 위한, Deep Link URL.
   // 원래는 동일한 Deep Link URL 이어야 하는데, 2023년 3월 8일 기준, FlutterFlow 에 버그가 있다.
@@ -32,11 +32,12 @@ export class Config {
   static androidUrl =
     "https://hypetalk.page.link/?apn=com.withcenter.hypetalk&link=https://hypetalk.page.link/niceAuthCallback/?token=";
   static iosUrl =
-    "com.withcenter.hypetalk://hypetalk.page.link/niceAuthCallback/?token=";
+    "https://hypetalk.page.link/?ibi=com.withcenter.hypetalk&isi=6446163804&efr=1&link=https://hypetalk.page.link/niceAuthCallback/?token=";
+  // "com.withcenter.hypetalk://hypetalk.page.link/niceAuthCallback/?token=";
 
-  static webUrl = Config.local ?
-    "http://localhost:53538/niceAuthCallback/?token=" :
-    "https://hypetalk.flutterflow.app/niceAuthCallback/?token=";
+  static webUrl = Config.local
+    ? "http://localhost:53538/niceAuthCallback/?token="
+    : "https://hypetalk.flutterflow.app/niceAuthCallback/?token=";
 
   //
   // -- 아래는 경우에 따라서 수정해야 한다. --
