@@ -21,23 +21,23 @@ export class Config {
   static accessToken = NiceApiKey.accessToken;
 
   // 리턴 URL, 콜백 URL. 프로젝트 마다 적절히 수정해야 한다. 특히, domain(host) 부분.
-  static returnUrl = Config.local
-    ? "http://localhost:5001/hype-9f920/asia-northeast3/niceAuthCallback"
-    : "https://asia-northeast3-hype-9f920.cloudfunctions.net/niceAuthCallback";
+  static returnUrl = Config.local ?
+    "http://localhost:5001/hype-9f920/asia-northeast3/niceAuthCallback" :
+    "https://asia-northeast3-hype-9f920.cloudfunctions.net/niceAuthCallback";
 
   // 앱을 열기 위한, Deep Link URL.
-  // 원래는 동일한 Deep Link URL 이어야 하는데, 2023년 3월 8일 기준, FlutterFlow 에 버그가 있다.
-  // Deep Link 가 훨씬 부드럽게 잘 동작하는데, 2023년 3월 8일 기준, iOS 는 땜빵으로 동자하지만, Android 는 동작하지 않는다.
-  // 그래서 Android 는 Dyanmic Link 를 사용한다. 어차피, Android 에서는 Dynamic Link 가 부드럽게 동작한다.
+  // iOS 에서 prefix 가 들어가면 잘 동작하지 않는다. 이 부분 확인이 필요하다.
+  // `PatchToken` 에 토큰이 들어간다.
+  // 모든 것이 성공적으로 인증되면, 앱의 /afterNiceAuth route 로 접속을 한다.
   static androidUrl =
-    "https://hypetalk.page.link/?apn=com.withcenter.hypetalk&link=https://hypetalk.page.link/niceAuthCallback/?token=";
+    "https://hypetalk.page.link/?link=https://hypetalk.page.link/afterNiceAuth/?token%3DPatchToken&apn=com.withcenter.hypetalk&isi=6446163804&ibi=com.withcenter.hypetalk&st=Auth+Callback&sd=Nice+Auth+Callback+URL&efr=1";
   static iosUrl =
-    "https://hypetalk.page.link/?ibi=com.withcenter.hypetalk&isi=6446163804&efr=1&link=https://hypetalk.page.link/niceAuthCallback/?token=";
+    "https://hypetalk.page.link/?link=https://hypetalk.page.link/afterNiceAuth/?token%3DPatchToken&apn=com.withcenter.hypetalk&isi=6446163804&ibi=com.withcenter.hypetalk&st=Auth+Callback&sd=Nice+Auth+Callback+URL&efr=1";
   // "com.withcenter.hypetalk://hypetalk.page.link/niceAuthCallback/?token=";
 
-  static webUrl = Config.local
-    ? "http://localhost:53538/niceAuthCallback/?token="
-    : "https://hypetalk.flutterflow.app/niceAuthCallback/?token=";
+  static webUrl = Config.local ?
+    "http://localhost:53538/afterNiceAuth/?token=" :
+    "https://hypetalk.flutterflow.app/afterNiceAuth/?token=";
 
   //
   // -- 아래는 경우에 따라서 수정해야 한다. --

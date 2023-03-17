@@ -12,7 +12,7 @@ do
         duration=$SECONDS
         echo "--> Downloaded in $(($duration / 60)) minutes and $(($duration % 60)) seconds."
         kill -USR2 $(cat ./flutter.pid)
-        sleep 30
+        sleep 40
     done
 done
 
