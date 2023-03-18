@@ -1,3 +1,8 @@
+/**
+ * 저작자: 송재호
+ * 연락처: thruthesky@gmail.com
+ * 라이센스: 무료이지만, 2차적 창작(수정/개작)을 하는 경우 저작자에게 알려야 하며, 재 판매나 수익성을 위해서 활용하는 경우는 저작자에게 허가를 받아야 합니다.
+ */
 import NiceApiKey from "../keys/nice-api-key";
 /**
  * Config
@@ -23,9 +28,9 @@ export class Config {
   // 리턴 URL, 콜백 URL. 프로젝트 마다 적절히 수정해야 한다. 특히, domain(host) 부분.
   // 웹 표준 인증 창에서 인증을 한 다음, 인증 정보를 받을 callback url.
   // 이 함수에서 인증 정보를 받아서, 복호화 하여 Custom Token 을 생성한다.
-  static returnUrl = Config.local ?
-    "http://localhost:5001/hype-9f920/asia-northeast3/niceAuthCallback" :
-    "https://asia-northeast3-hype-9f920.cloudfunctions.net/niceAuthCallback";
+  static returnUrl = Config.local
+    ? "http://localhost:5001/hype-9f920/asia-northeast3/niceAuthCallback"
+    : "https://asia-northeast3-hype-9f920.cloudfunctions.net/niceAuthCallback";
 
   // niceAuthCallback 에서 사용자 정보 복호화 후, Custom token 으로 앱을 열기 위한, Deep Link URL.
   //
@@ -35,9 +40,9 @@ export class Config {
   //
   // Link 생성 참조: https://docs.google.com/document/d/1jJnrcPuSWBTzmSQE6y4gz3pO8F743gPy1JO9sNOQiCU/edit#heading=h.4bz1aeelm7q6
   // 플러터플로 작업 참조: https://docs.google.com/document/d/1jJnrcPuSWBTzmSQE6y4gz3pO8F743gPy1JO9sNOQiCU/edit#heading=h.r4nz8bt860ok
-  static dynamicLink = Config.local ?
-    "http://localhost:53538/afterNiceAuth/?token=" : // "https://hypetalk.page.link/zXbp?token=xxxx";
-      "https://hypetalk.page.link/?link=https://hypetalk.page.link/afterNiceAuth/?token%3DPatchToken&apn=com.withcenter.hypetalk&isi=6446163804&ibi=com.withcenter.hypetalk&st=하입톡&sd=프라이빗한+메신저를+만나다";
+  static dynamicLink = Config.local
+    ? "http://localhost:53538/afterNiceAuth/?token=" // "https://hypetalk.page.link/zXbp?token=xxxx";
+    : "https://hypetalk.page.link/?link=https://hypetalk.page.link/afterNiceAuth/?token%3DPatchToken&apn=com.withcenter.hypetalk&isi=6446163804&ibi=com.withcenter.hypetalk&st=하입톡&sd=프라이빗한+메신저를+만나다";
 
   //
   // -- 아래는 경우에 따라서 수정해야 한다. --
