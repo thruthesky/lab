@@ -5,8 +5,8 @@ import {
   createDecipheriv,
   createHmac,
 } from "node:crypto";
-import {Config} from "./config";
-import {AccessToken, AuthData, SymmetricKey} from "./nice-api.interfaces";
+import { Config } from "./config";
+import { AccessToken, AuthData, SymmetricKey } from "./nice-api.interfaces";
 
 /**
  * Nice API
@@ -24,7 +24,7 @@ export class NiceApi {
   static async requestAccessToken(): Promise<AccessToken> {
     // Base64 인코딩
     const bearer64 = Buffer.from(
-        `${Config.clientId}:${Config.clientSecret}`
+      `${Config.clientId}:${Config.clientSecret}`
     ).toString("base64");
 
     // Content-Type 이 application/x-www-form-urlencoded 인 경우
@@ -36,14 +36,14 @@ export class NiceApi {
     });
 
     const res = await axios.post(
-        `${Config.apiUrl}${Config.accessTokenRequestUri}`,
-        params,
-        {
-          headers: {
-            "Content-Type": "application/x-www-form-urlencoded",
-            "Authorization": `Basic ${bearer64}`,
-          },
-        }
+      `${Config.apiUrl}${Config.accessTokenRequestUri}`,
+      params,
+      {
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded",
+          Authorization: `Basic ${bearer64}`,
+        },
+      }
     );
 
     return res.data;
@@ -63,9 +63,9 @@ export class NiceApi {
 
     // Get date string of YYYYMMDDHHmmss
     const dateTime: string = koreanDate
-        .toISOString()
-        .replace(/[-:T]/g, "")
-        .slice(0, 14);
+      .toISOString()
+      .replace(/[-:T]/g, "")
+      .slice(0, 14);
 
     const seconds: number = Math.round(koreanDate.getTime() / 1000);
     const requestNo = "REQ" + (koreanDate.getTime() + "").padStart(27, "0");
@@ -75,7 +75,7 @@ export class NiceApi {
     const bearer64 = Buffer.from(authorizationSourceKey).toString("base64");
 
     const params = {
-      dataHeader: {CNTY_CD: "ko"},
+      dataHeader: { CNTY_CD: "ko" },
       dataBody: {
         req_dtim: dateTime,
         req_no: requestNo,
@@ -84,24 +84,24 @@ export class NiceApi {
     };
 
     Config.trace(
-        "requestCryptoToken() -> authorizationSourceKey: ",
-        authorizationSourceKey,
-        params
+      "requestCryptoToken() -> authorizationSourceKey: ",
+      authorizationSourceKey,
+      params
     );
 
     const headers = {
       "Content-Type": "application/json",
-      "Authorization": `bearer ${bearer64}`,
+      Authorization: `bearer ${bearer64}`,
       // client_id: Config.clientId,
-      "productID": Config.productID,
+      productID: Config.productID,
     };
 
     const res = await axios.post(
-        `${Config.apiUrl}${Config.cryptoTokenRequestUri}`,
-        params,
-        {
-          headers: headers,
-        }
+      `${Config.apiUrl}${Config.cryptoTokenRequestUri}`,
+      params,
+      {
+        headers: headers,
+      }
     );
 
     Config.trace("requestCryptoToken() -> request resultl", res.data);
@@ -147,10 +147,10 @@ export class NiceApi {
 
     // sha256 알고리즘을 사용하여 해시를 생성한다.
     const hashedPassword = createHash("sha256")
-    // 비밀번호를 해시로 추가한다.
-        .update(password)
-    // 해시로 부터 digest 를 계산해 주는 함수이다. base64 로 인코딩한다.
-        .digest("base64");
+      // 비밀번호를 해시로 추가한다.
+      .update(password)
+      // 해시로 부터 digest 를 계산해 주는 함수이다. base64 로 인코딩한다.
+      .digest("base64");
 
     auth.symmetricKey = {
       result: hashedPassword,
@@ -190,7 +190,7 @@ export class NiceApi {
 
       authtype: "M",
       mobilceco: "S",
-      businessno: "6368602965", // 법인인 경우만 사업자 번호 입력
+      businessno: Config.companyRegistrationNo, // 법인인 경우만 사업자 번호 입력
       methodtype: "get",
       popupyn: "N",
       receivedata: "developer state code" + auth.dateTime,
@@ -242,8 +242,8 @@ export class NiceApi {
    */
   static hmac256(encrypted: string, auth: AuthData): string {
     const hmac = createHmac("sha256", auth.symmetricKey.hmac_key)
-        .update(encrypted)
-        .digest("base64");
+      .update(encrypted)
+      .digest("base64");
 
     return hmac;
   }

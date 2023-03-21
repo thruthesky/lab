@@ -1,7 +1,9 @@
 /**
  * 저작자: 송재호
  * 연락처: thruthesky@gmail.com
- * 라이센스: 무료이지만, 2차적 창작(수정/개작)을 하는 경우 저작자에게 알려야 하며, 재 판매나 수익성을 위해서 활용하는 경우는 저작자에게 허가를 받아야 합니다.
+ * 라이센스
+ * 개인적인 용도, 비 상업적인 용도는 무료. 상업적인 용도는 유료이다.
+ * 2차적 창작(수정/개작)을 하는 경우 저작자에게 알려야 하며, 재 판매나 타인/타서비스에 소스를 제공하는 경우 저작자에게 알려야 한다.
  */
 import NiceApiKey from "../keys/nice-api-key";
 /**
@@ -42,7 +44,10 @@ export class Config {
   // 플러터플로 작업 참조: https://docs.google.com/document/d/1jJnrcPuSWBTzmSQE6y4gz3pO8F743gPy1JO9sNOQiCU/edit#heading=h.r4nz8bt860ok
   static dynamicLink = Config.local
     ? "http://localhost:53538/afterNiceAuth/?token=" // "https://hypetalk.page.link/zXbp?token=xxxx";
-    : "https://hypetalk.page.link/?link=https://hypetalk.page.link/afterNiceAuth/?token%3DPatchToken&apn=com.withcenter.hypetalk&isi=6446163804&ibi=com.withcenter.hypetalk&st=하입톡&sd=프라이빗한+메신저를+만나다";
+    : "https://hypetalk.page.link/?link=https://hypetalk.page.link/afterNiceAuth/?token%3DPatchToken&apn=com.withcenter.hypetalk&isi=6446163804&ibi=com.withcenter.hypetalk&st=하입톡&sd=프라이빗한+메신저를+만나다&efr=1";
+
+  // 법인 회사인 경우에만 사업자 등록 번호 입력. 개인 회사인 경우에는 그냥 빈 문자열.
+  static companyRegistrationNo = "6368602965";
 
   //
   // -- 아래는 경우에 따라서 수정해야 한다. --
