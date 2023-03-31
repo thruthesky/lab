@@ -58,3 +58,25 @@ flutter run -d 00008030-000904C80290802E --pid-file=../../../flutter.pid
 ```sh
 ./multi.sh free-expression-k5451h
 ```
+
+
+## Debug in VSCode
+
+Yes, you can do the same development as you do in Flutter with VSCode. Attach the VSCode to the running debug process and that's it.
+
+- Open `launcher.json` and add someting like below.
+
+```json
+{
+    "name": "FireFlow3 attach",
+    "cwd": "apps/fire-flow3-pau336/fire_flow3",
+    "request": "attach",
+    "type": "dart",
+    "program": "lib/main.dart",
+    "deviceId": "8E7C4276-1F64-453C-AE32-422C59170B93",
+    "args": ["--app-id", "com.withcenter.fireflow3"]
+},
+```
+
+The request is `attach`.
+And see the args with `--app-id`. You should input the bundle id(package name).
