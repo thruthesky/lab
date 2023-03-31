@@ -14,6 +14,8 @@ export const helloWorld = functions.https.onRequest((request, response) => {
 
 export const test = functions.region("asia-northeast3").https.onRequest((request, response) => {
   functions.logger.info("Hello logs!", {structuredData: true});
+  // http://127.0.0.1:5001/flutter-flow-korea/asia-northeast3/run
+  // https://asia-northeast3-flutter-flow-korea.cloudfunctions.net/run
   response.send(`
     <html>
         <head>
@@ -105,20 +107,22 @@ export const run = functions
     <div>7 ${parts[7]}</div>
     
     `;
-
       console.log(info);
 
       // / parse access
       // Initialize another app
-      const app = initializeApp({
-        apiKey: apiKey,
-        authDomain: authDomain,
-        databaseURL: "https://withcenter-test-2-default-rtdb.asia-southeast1.firebasedatabase.app",
-        projectId: projectId,
-        storageBucket: "withcenter-test-2.appspot.com",
-        messagingSenderId: "817502397544",
-        appId: appId,
-      });
+      const app = initializeApp(
+          {
+            apiKey: apiKey,
+            authDomain: authDomain,
+            databaseURL: "https://withcenter-test-2-default-rtdb.asia-southeast1.firebasedatabase.app",
+            projectId: projectId,
+            storageBucket: "withcenter-test-2.appspot.com",
+            messagingSenderId: "817502397544",
+            appId: appId,
+          },
+          apiKey
+      );
 
       const db = getFirestore(app);
       const citiesCol = collection(db, "users");
