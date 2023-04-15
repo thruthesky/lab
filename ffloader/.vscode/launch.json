@@ -5,6 +5,15 @@
   "version": "0.2.0",
   "configurations": [
     {
+      "name": "FireFlow App attach",
+      "cwd": "apps/fireflow-app-uu62ts/fireflow_app",
+      "request": "attach",
+      "type": "dart",
+      "program": "lib/main.dart",
+      "deviceId": "F9C3E82F-C978-4271-8528-F75B5A7A3BD3",
+      "args": ["--app-id", "com.mycompany.fireflowapp"]
+    },
+    {
       "name": "FireFlow3 attach",
       "cwd": "apps/fire-flow3-pau336/fire_flow3",
       "request": "attach",
