@@ -4,6 +4,9 @@ flutter.pid
 ./keys
 keys/
 **/*/keys/
+key/
+**/*/key/
+**/*/android/key.properties
 
 **/*/.DS_Store
 
