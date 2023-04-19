@@ -1,0 +1,269 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /ff_user_push_notifications/{document} {
+      allow create: if /databases/$(database)/documents/users/$(request.auth.uid) == request.resource.data.sender;
+      allow read: if false;
+      allow write: if false;
+      allow delete: if false;
+    }
+    
+    match /dates/{documentId} {
+      allow read,write: if true;
+    }
+    
+    match /favorites/{documentId} {
+      allow read,write: if isMyDoc() || willBeMyDoc();
+    }
+    
+    // 신고
+    // 글, 코멘트, 사용자, 채팅 메시지, 기타
+    match /reports/{documentId} {
+      allow read: if resource.data.reporter == myReference() || isAdmin();
+      allow create,update: if request.resource.data.reporter == myReference();
+      allow delete: if false;
+    }
+    
+    // For GPT & ChatGPT only.
+    // You can delete this if you don't use GPT & ChatGPT.
+    // TODO : write better security rules for GPT & ChatGPT. `allow write: if myDoc()` will be enough.
+    match /gpt/{document} {
+      allow read: if true;
+      allow write: if true;
+    }
+
+    match /chat_rooms/{documentId} {
+      allow read: if isMyChatRoom() || isOpenChat() || isModerator();
+      allow create: if true;
+      allow update: if
+        // moderator can update anything
+        isModerator()
+        ||
+        // If is a single chat and it is my chat room. Then I can update it.
+        ( (isMyChatRoom() || wilBeMyChatRoom()) && request.resource.data.isGroupChat == false )
+        ||
+        // chat member update last message fields.
+        (
+          isMyChatRoom()
+          &&
+          onlyUpdating(["noOfMessages", "unsubscribedUserDocumentReferences", "subChatRoomCount", "isSubChatRoom", "userDocumentReferences", "lastMessage", "lastMessageUploadUrl", "lastMessageSentAt", "lastMessageSeenBy", "lastMessageSentBy"])
+        )
+        // chat member can remove himself or add other users.
+        ||
+        (
+          isMyChatRoom()
+          &&
+          onlyUpdating(["userDocumentReferences"])
+          &&
+          request.resource.data.userDocumentReferences.hasAll(resource.data.userDocumentReferences.removeAll([myReference()]))
+        )
+        ||
+        // 내 방이 아니더라도, (추천 링크에 의해) 오픈 챗이면, 참여를 할 수 있다.
+        (
+          isOpenChat()
+          &&
+          onlyUpdating(["userDocumentReferences"])
+          &&
+          request.resource.data.userDocumentReferences.hasAll(resource.data.userDocumentReferences.concat([myReference()]))
+        )
+        ;
+      allow delete: if isGroupChat() == false && isMyChatRoom();
+    }
+
+    // Note that, admin can read all chat room messages for the safety reason. If you don't like it, remove the isAdmin() from the read rule.
+    match /chat_room_messages/{documentId} {
+      allow read: if get(resource.data.chatRoomDocumentReference).data.userDocumentReferences.hasAny([myReference()]) || isAdmin();
+      allow create: if get(request.resource.data.chatRoomDocumentReference).data.userDocumentReferences.hasAny([myReference()]) && willBeMyDoc();
+      allow update, delete: if isMyDoc();
+    }
+
+    // Note that, this allow users to add chat friends (chat room references) into chat_friends collection.
+    match /chat_friends/{documentId} {
+      allow read, write: if isMyDoc() || willBeMyDoc();
+    }
+
+    match /users/{documentId} {
+      allow create: if request.auth.uid == documentId;
+      // 주의: 다른 사용자들이 나의 문서 내용을 볼 수 있다. 집주소, email, phone number 등을 보관하면 안된다.
+      allow read: if true;
+      allow update: if request.auth.uid == documentId;
+      allow delete: if false;
+      match /fcm_tokens/{fcmTokenDocId} {
+        allow get, list, delete: if request.auth.uid == documentId;
+        allow create, update, delete: if request.auth.uid == documentId && required(['fcm_token', 'device_type', 'created_at']);
+      }
+    }
+    
+    match /users_private_data/{documentId} {
+      allow read,write: if request.auth.uid == documentId;
+    }
+
+
+    match /{path=**}/fcm_tokens/{documentId} {
+      allow read: if true;
+    }
+    
+    
+    match /user_settings/{documentId} {
+    	allow read: if true;
+      allow create: if willBeMyDoc();
+      allow update: if isMyDoc();
+      allow delete: if isMyDoc();
+    }
+  
+    // 시스템 설정
+    match /system_settings/{documentId} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+
+    // reports
+    match /reports/{documentId} {
+      allow read: if isMyDoc() || isAdmin();
+      allow write: if isMyDoc() || willBeMyDoc() || isAdmin();
+    }
+
+
+    // category
+    match /categories/{categoryId} {
+      allow read: if true;
+      allow create, delete: if isAdmin();
+      allow update: if isAdmin() || onlyUpdating(['noOfPosts', 'noOfComments'])
+    }
+
+    // posts
+    match /posts/{postId} {
+      allow read: if true;
+      allow create: if
+        // 카테고리 ID 가 입력되고,
+        required(['categoryId'])
+        &&
+        // 카테고리가 존재하고
+        categoryExists()
+        &&
+        // 내 글로 저장되고,
+        willBeMyDoc()
+        &&
+        (
+          // 관리자 이거나
+        	isAdmin()
+          ||
+          // 쓰기 가능한 게시판이거나
+          isReadOnlyCategory() == false
+        )
+      ;
+
+      // Post update rule;
+      // - Success if nothing changes. if request.resource.data is same as resource.data
+      // - Success if 'likes', 'noOfLikes', 'noOfComments' is updated only.
+      allow update: if
+        isMyDoc()
+        ||
+        isAdmin()
+        ||
+        onlyUpdating(['likes', 'noOfLikes', 'noOfComments'])
+      ;
+      // See the readme for post and comment deletion.
+      allow delete: if isMyDoc() || isAdmin();
+    }
+
+    // comments
+    match /comments/{commentId} {
+      allow read: if true;
+      allow create: if willBeMyDoc();
+      allow update: if
+        isMyDoc() 
+        ||
+        isAdmin()
+        ||
+        onlyUpdating(['likes', 'noOfLikes'])
+      ;
+      // See the readme for post and comment deletion.
+      allow delete: if isMyDoc() || isAdmin();
+    }
+
+
+    // bookmarks
+    match /bookmarks/{documentId} {
+      allow create: if true;
+      allow read: if isMyDoc();
+      allow update: if false;
+      allow delete: if isMyDoc();
+    }
+
+
+    match /storage_files/{documentId} {
+      allow read, write: if true;
+    }
+
+
+    
+    // check if the user is admin.
+    function isAdmin() {
+      return get(/databases/$(database)/documents/system_settings/admins).data[request.auth.uid] == true;
+    }
+    
+    // 읽기 전용 카테고리인가?
+    function isReadOnlyCategory() {
+      let data = get(/databases/$(database)/documents/categories/$(request.resource.data.categoryId)).data;
+      return 'readOnly' in data && data.readOnly == true;
+    }
+
+    function isMyChatRoom() {
+      return resource.data.userDocumentReferences.hasAny([myReference()]);
+    }
+    
+    function wilBeMyChatRoom() {
+      return request.resource.data.userDocumentReferences.hasAny([myReference()]);
+    }
+
+
+    function isModerator() {
+      return
+          'moderatorUserDocumentReferences' in resource.data
+          &&
+          myReference() in resource.data.moderatorUserDocumentReferences
+        ;
+    }
+    
+    // check if the document has the login user's uid or reference.
+    function isMyDoc() {
+      return resource.data.userDocumentReference == myReference() || request.auth.uid == resource.data.uid;
+    }
+    
+    function willBeMyDoc() {
+      return request.resource.data.userDocumentReference == myReference();
+    }
+    
+    function categoryExists() {
+      return exists(/databases/$(database)/documents/categories/$(request.resource.data.categoryId));
+    }
+    
+    
+    
+    
+    function myReference() {
+      return /databases/$(database)/documents/users/$(request.auth.uid);
+    }
+  }
+}
+
+// * Warning : It's check the fields after save.
+// * Warning : !!! It's not checking the incoming data fields !!!
+function required(fields) {
+  return request.resource.data.keys().hasAll( fields );
+}
+
+
+
+function onlyUpdating(fields) {
+  return request.resource.data.diff(resource.data).affectedKeys().hasOnly(fields);
+}
+
+function isOpenChat() {
+  return 'isOpenChat' in  resource.data && resource.data.isOpenChat == true;
+}
+
+function isGroupChat() {
+  return 'isGroupChat' in  resource.data && resource.data.isGroupChat == true;
+}
