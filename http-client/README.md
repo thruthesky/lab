@@ -1,2 +1,0 @@
-# http
-Rest Client Examples
