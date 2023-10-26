@@ -21,6 +21,8 @@
 * `firebase/get_users` 파이어베이스의 접속 키로 다른 파이어베이스의 정보 긁어 오기
 * `openai/data` GPT Fine Tuning 에 대한 정보가 들어가 있다.
 * `rest-client` VSCode 의 Rest client extension 으로 HTTP 쿼리를 하는 예제를 모아 놓았다. 나름 도움이 된다.
+* `firebase/cloud-functions/cron` 클라우드 함수를 크론 처럼 Scheduling 에서 특정 시간 주기 마다 실행.
+* `firebase/cloud-funcitons/service-account-test` Service account 를 JSON 으로 저장 후, JSON import 해서 초기화
 
 # Test
 
