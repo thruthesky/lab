@@ -12,6 +12,9 @@
 
 
 * `authentication/nice-id-pass-login` 나이스 본인 인증 - NICE PASS 본인 확인 - 해당 README 파일 참고
+* `docker/*` 도커 설정이 들어가 있다.
+  * `docker/docker-emp` Enginx, MariadB, PHP 가 들어가 있는 도커. 쉽게 시스템 셋업을 할 수 있다.
+  * `docker/docker-meilisearch` Meilisearch 에 대한 도커 설정
 * `ffloader` FlutterFlow auto loader
 * `firebase/cloud-functions` 파이어베이스 클라우드 함수 관련 코드. 이 폴더에 중요한 코드들이 많다. 특히, 곧바로 사용가능한 코드들이 있으므로 꼭 README 를 참고한다.
   * `firebase/cloud-functions/sync-firestore-rtdb` Firestore 의 모든 데이터를 rtdb 로 sync 하는 클라우드 함수 (미완성)

@@ -1,0 +1,17 @@
+#!/bin/bash
+
+
+key=$1
+project_id=$2
+while true
+do
+  now=`date`
+  echo "--> $now - Downloading with assets ..."
+  SECONDS=0
+  flutterflow export-code --project $project_id --dest . --include-assets --token $key
+  duration=$SECONDS
+  echo "--> Downloaded in $(($duration / 60)) minutes and $(($duration % 60)) seconds."
+#   kill -USR2 $(cat ./flutter.pid)
+  echo "--> Wait for 10 minutes..."
+  sleep 600
+done

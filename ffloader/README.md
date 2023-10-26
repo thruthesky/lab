@@ -1,7 +1,40 @@
 # FFLoader
 
 ## How to install flutterflow cli
+
 dart pub global activate flutterflow_cli
+
+
+## How to use ff command
+
+`ff` command automatically download every 10 minutes.
+
+* Add the path of `ffload` folder into your environment path. For instance, open .zshrc file with vi and add the following
+
+
+* `vi ~/.zshrc`
+
+```sh
+export PATH="/Users/thruthesky/lab/ffloader:$PATH"
+```
+
+* Then, run `ff [key] [project-id]` and it will load and reload the Simulator.
+
+* Open the project in VSCode
+
+* Initialize the project folder with git
+  * `git init`
+  * `git branch -M main`
+  * `git add .`
+  * `git commit -a -m "first import"`
+
+
+* Then, create a branch `work` and continue work.
+
+* Create the launch.json in `work` branch or it will be deleted.
+
+* Whenever there is update from FlutterFlow,
+  * `git merge main`
 
 
 ## How to download code
