@@ -31,10 +31,9 @@ export PATH="/Users/thruthesky/lab/ffloader:$PATH"
 
 * Then, create a branch `work` and continue work.
 
-* Create the launch.json in `work` branch or it will be deleted.
+* Create the launch.json.
 
-* Whenever there is update from FlutterFlow,
-  * `git merge main`
+* Note that, the `ff` will download the updated source code from FlutterFlow into current folder. so, even if you are working in a new branch, it will overwirte it anyway. But if you use git, it will do the history, tag, and more things.
 
 
 ## How to download code
