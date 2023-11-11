@@ -12,6 +12,6 @@ do
   duration=$SECONDS
   echo "--> Downloaded in $(($duration / 60)) minutes and $(($duration % 60)) seconds."
 #   kill -USR2 $(cat ./flutter.pid)
-  echo "--> Wait for 10 minutes..."
-  sleep 600
+  echo "--> $now Done. Enter to reload again."
+  read enterKey
 done

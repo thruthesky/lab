@@ -1,0 +1,18 @@
+{
+  "name": "firestore-json-download",
+  "version": "1.0.0",
+  "description": "특정 컬렉션을 JSON 으로 다운로드한다. 다운로드한 JSON 파일을 다른 곳에 업로드 할 수 있다.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "firebase": "^10.6.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.9.0"
+  }
+}
