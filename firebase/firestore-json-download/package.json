@@ -10,7 +10,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "firebase": "^10.6.0"
+    "firebase": "^10.6.0",
+    "firebase-admin": "^11.11.0"
   },
   "devDependencies": {
     "@types/node": "^20.9.0"
