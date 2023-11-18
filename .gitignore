@@ -3,7 +3,8 @@ apps/
 flutter.pid
 
 # 비밀번호
-**/*.keys
+**/*.keys.**
+**/keys.**
 ./keys
 keys/
 **/*/keys/

@@ -1,125 +1,157 @@
-import 'package:flutter/material.dart';
+// 카카오 로컬 : https://developers.kakao.com/docs/latest/ko/local/dev-guide
 
-void main() {
-  runApp(const MyApp());
+// dependencies:
+//   flutter:
+//     sdk: flutter
+//   cupertino_icons: ^1.0.2
+//   provider: ^5.0.0-nullsafety.5
+//   http: ^0.13.0-nullsafety.0
+//   url_strategy: ^0.2.0-nullsafety.0
+
+import 'dart:convert';
+import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
+
+Future<void> main() async {
+  return runApp(const MyApp());
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class MyApp extends StatefulWidget {
+  const MyApp({
+    super.key,
+  });
+  @override
+  State<StatefulWidget> createState() => MyAppState();
+}
 
-  // This widget is the root of your application.
+class MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // TRY THIS: Try running your application with "flutter run". You'll see
-        // the application has a blue toolbar. Then, without quitting the app,
-        // try changing the seedColor in the colorScheme below to Colors.green
-        // and then invoke "hot reload" (save your changes or press the "hot
-        // reload" button in a Flutter-supported IDE, or press "r" if you used
-        // the command line to start the app).
-        //
-        // Notice that the counter didn't reset back to zero; the application
-        // state is not lost during the reload. To reset the state, use hot
-        // restart instead.
-        //
-        // This works for code too, not just values: Most code changes can be
-        // tested with just a hot reload.
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
-    );
-  }
-}
+      home: Scaffold(
+        appBar: AppBar(
+          title: const Text('카카오 로컬 API - 주소를 좌표로 변환'),
+        ),
+        body: Column(
+          children: [
+            TextButton(
+                onPressed: () async {
+                  String apiUrl =
+                      "https://dapi.kakao.com/v2/local/search/address.json?query=경남 김해시 대성동 411-11";
+                  final http.Response res = await http.get(
+                    Uri.parse(apiUrl),
+                    headers: {"Authorization": "KakaoAK 7c567f8e9e57ffa08531df5aa9efebb5"},
+                  );
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
-
-  // This widget is the home page of your application. It is stateful, meaning
-  // that it has a State object (defined below) that contains fields that affect
-  // how it looks.
-
-  // This class is the configuration for the state. It holds the values (in this
-  // case the title) provided by the parent (in this case the App widget) and
-  // used by the build method of the State. Fields in a Widget subclass are
-  // always marked "final".
-
-  final String title;
-
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      // This call to setState tells the Flutter framework that something has
-      // changed in this State, which causes it to rerun the build method below
-      // so that the display can reflect the updated values. If we changed
-      // _counter without calling setState(), then the build method would not be
-      // called again, and so nothing would appear to happen.
-      _counter++;
-    });
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    // This method is rerun every time setState is called, for instance as done
-    // by the _incrementCounter method above.
-    //
-    // The Flutter framework has been optimized to make rerunning build methods
-    // fast, so that you can just rebuild anything that needs updating rather
-    // than having to individually change instances of widgets.
-    return Scaffold(
-      appBar: AppBar(
-        // TRY THIS: Try changing the color here to a specific color (to
-        // Colors.amber, perhaps?) and trigger a hot reload to see the AppBar
-        // change color while the other colors stay the same.
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        // Here we take the value from the MyHomePage object that was created by
-        // the App.build method, and use it to set our appbar title.
-        title: Text(widget.title),
-      ),
-      body: Center(
-        // Center is a layout widget. It takes a single child and positions it
-        // in the middle of the parent.
-        child: Column(
-          // Column is also a layout widget. It takes a list of children and
-          // arranges them vertically. By default, it sizes itself to fit its
-          // children horizontally, and tries to be as tall as its parent.
-          //
-          // Column has various properties to control how it sizes itself and
-          // how it positions its children. Here we use mainAxisAlignment to
-          // center the children vertically; the main axis here is the vertical
-          // axis because Columns are vertical (the cross axis would be
-          // horizontal).
-          //
-          // TRY THIS: Invoke "debug painting" (choose the "Toggle Debug Paint"
-          // action in the IDE, or press "p" in the console), to see the
-          // wireframe for each widget.
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headlineMedium,
-            ),
+                  final Map<String, dynamic> result = json.decode(res.body);
+                  print(result);
+                },
+                child: const Text("한글 주소로 좌표 가져오기")),
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
 }
+
+// class LocalProvider with ChangeNotifier {
+//   static const String URL = "https://dapi.kakao.com/v2/local/search/address.json";
+//   static const Map<String, String> HEADERS = {"Authorization": "KakaoAK REST_API_KEY"};
+
+//   Map<String, dynamic>? _data;
+//   Map<String, dynamic>? get data => _data;
+
+//   set data(newData) {
+//     _data = newData;
+//     notifyListeners();
+//   }
+
+//   Future<void> search({required String searchData}) async {
+//     final String data =
+//         "?query=$searchData&page=1&size=10&analyze_type=similar"; // 기본 값 : page=1&size=10&analyze_type=similar
+//     final http.Response res =
+//         await http.get(Uri.parse(LocalProvider.URL + data), headers: LocalProvider.HEADERS);
+//     final Map<String, dynamic> result = json.decode(res.body);
+//     data = result;
+//     return;
+//   }
+// }
+
+// class Func2 extends StatefulWidget {
+//   const Func2({super.key});
+
+//   @override
+//   _Func2State createState() => _Func2State();
+// }
+
+// class _Func2State extends State<Func2> {
+//   TextEditingController? _ct;
+//   @override
+//   void initState() {
+//     _ct = TextEditingController(text: "");
+//     super.initState();
+//   }
+
+//   @override
+//   void dispose() {
+//     _ct?.dispose();
+//     super.dispose();
+//   }
+
+//   LocalProvider? _localProvider;
+//   @override
+//   Widget build(BuildContext context) {
+//     _localProvider = Provider.of<LocalProvider>(context);
+//     return _ct == null
+//         ? Container()
+//         : Scaffold(
+//             appBar: AppBar(
+//               title: const Text("주소 및 좌표 검색 _ KakaO"),
+//             ),
+//             body: Center(
+//               child: Container(
+//                 padding: const EdgeInsets.all(20.0),
+//                 child: TextField(
+//                   controller: _ct,
+//                 ),
+//               ),
+//             ),
+//             floatingActionButton: FloatingActionButton(
+//               child: const Icon(Icons.search),
+//               onPressed: () async {
+//                 await _localProvider!.search(searchData: _ct!.text);
+//                 _ct!.text = "";
+//                 await Navigator.of(context).push(MaterialPageRoute(
+//                     settings: const RouteSettings(name: '/kakaoAddress'),
+//                     builder: (BuildContext context) => const SearchPage()));
+//                 return;
+//               },
+//             ),
+//           );
+//   }
+// }
+
+// class SearchPage extends StatelessWidget {
+//   const SearchPage({super.key});
+
+//   @override
+//   Widget build(BuildContext context) {
+//     LocalProvider local = Provider.of<LocalProvider>(context);
+//     local.data ??= [];
+//     return Scaffold(
+//       appBar: AppBar(
+//         title: const Text("검색 결과"),
+//       ),
+//       body: (local._data == null || local.data!.isEmpty)
+//           ? Container()
+//           : ListView.builder(
+//               itemCount: int.parse(local.data!['meta']['total_count'].toString()),
+//               itemBuilder: (BuildContext context, int index) => ListTile(
+//                     title: Text(local.data!['documents'][index]['address_name'].toString()),
+//                     subtitle: Text(
+//                         "x: ${local.data!['documents'][index]['x'].toString()} , y: ${local.data!['documents'][index]['y'].toString()}"),
+//                     onTap: () {},
+//                   )),
+//     );
+//   }
+// }
