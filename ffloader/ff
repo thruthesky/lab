@@ -1,3 +1,9 @@
+#!/usr/local/bin/ts-node
+
+console.log("Yo");
+
+
+/**
 #!/bin/bash
 
 
@@ -15,3 +21,4 @@ do
   echo "--> $now Done. Enter to reload again."
   read enterKey
 done
+*/
