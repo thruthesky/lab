@@ -1,3 +1,6 @@
+import 'dart:convert';
+
+String json = r'''
 {"type":"table","name":"countries","database":"test5","data":
 [
 {"idx":"1","koreanName":"아프가니스탄","englishName":"Afghanistan","officialName":"افغانستان","alpha2":"AF","alpha3":"AFG","currencyCode":"AFN","currencyName":"Afghan afghani","currencyKoreanName":"","currencySymbol":"؋","numericCode":"000004","flag":"🇦🇫","dialCode":"+93","latitude":"33.93911","longitude":"67.709953","createdAt":"1617533769","updatedAt":"1685168715"},
@@ -246,4 +249,17 @@
 {"idx":"244","koreanName":"예멘","englishName":"Yemen","officialName":"اليمن","alpha2":"YE","alpha3":"YEM","currencyCode":"YER","currencyName":"Yemeni rial","currencyKoreanName":"리알","currencySymbol":"﷼","numericCode":"000887","flag":"🇾🇪","dialCode":"+967","latitude":"15.552727","longitude":"48.516388","createdAt":"1617533770","updatedAt":"1685168716"},
 {"idx":"245","koreanName":"잠비아","englishName":"Zambia","officialName":"Zambia","alpha2":"ZM","alpha3":"ZMB","currencyCode":"ZMW","currencyName":"Zambian kwacha","currencyKoreanName":"","currencySymbol":"ZK","numericCode":"000894","flag":"🇿🇲","dialCode":"+260","latitude":"-13.133897","longitude":"27.849332","createdAt":"1617533770","updatedAt":"1685168716"}
 ]
+}
+''';
+void main() {
+  json = json.replaceAll("'", "\'").replaceAll(r"$", "\\\\\$");
+  final decoded = jsonDecode(json);
+  final data = decoded['data'];
+
+  for (var i = 0; i < data.length; i++) {
+    final d = data[i];
+    print(
+      "(koreanName: '${d['koreanName']}', englishName: '${d['englishName']}', officialName: '${d['officialName']}', alpha2: '${d['alpha2']}', alpha3: '${d['alpha3']}', currencyCode: '${d['currencyCode']}', currencyName: '${d['currencyName']}', currencyKoreanName: '${d['currencyKoreanName']}', currencySymbol: '${d['currencySymbol']}',  flag: '${d['flag']}', dialCode: '${d['dialCode']}',),",
+    );
+  }
 }
