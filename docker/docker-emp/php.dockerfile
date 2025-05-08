@@ -1,4 +1,4 @@
-# PHP 8.0.3 (최신버전) + FPM + Alpine 리눅스 조합
+# PHP 8.1.9 (최신버전) + FPM + Alpine 리눅스 조합
 #
 # 구성: PDO, MySQLi, GD, Exif
 #
