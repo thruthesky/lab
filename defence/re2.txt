@@ -1,0 +1,251 @@
+전체 IP 주소 (고유, 정렬): 321
+
+=== Firewalld 명령어 ===
+firewall-cmd --permanent --add-rich-rule="rule family='ipv4' source address='111.27.0.0/16' reject"
+firewall-cmd --permanent --add-rich-rule="rule family='ipv4' source address='112.39.0.0/16' reject"
+firewall-cmd --permanent --add-rich-rule="rule family='ipv4' source address='113.221.0.0/16' reject"
+firewall-cmd --permanent --add-rich-rule="rule family='ipv4' source address='139.170.0.0/16' reject"
+firewall-cmd --permanent --add-rich-rule="rule family='ipv4' source address='144.76.0.0/16' reject"
+firewall-cmd --permanent --add-rich-rule="rule family='ipv4' source address='183.197.0.0/16' reject"
+firewall-cmd --permanent --add-rich-rule="rule family='ipv4' source address='36.142.0.0/16' reject"
+firewall-cmd --permanent --add-rich-rule="rule family='ipv4' source address='47.243.0.0/16' reject"
+firewall-cmd --permanent --add-rich-rule="rule family='ipv4' source address='66.249.0.0/16' reject"
+firewall-cmd --permanent --add-rich-rule="rule family='ipv4' source address='8.210.0.0/16' reject"
+firewall-cmd --permanent --add-rich-rule="rule family='ipv4' source address='8.217.0.0/16' reject"
+firewall-cmd --permanent --add-rich-rule="rule family='ipv4' source address='111.25.194.0/24' reject"
+firewall-cmd --permanent --add-rich-rule="rule family='ipv4' source address='20.15.133.0/24' reject"
+firewall-cmd --permanent --add-rich-rule="rule family='ipv4' source address='65.55.210.0/24' reject"
+firewall-cmd --permanent --add-rich-rule="rule family='ipv4' source address='1.26.127.56' reject"
+firewall-cmd --permanent --add-rich-rule="rule family='ipv4' source address='110.243.86.3' reject"
+firewall-cmd --permanent --add-rich-rule="rule family='ipv4' source address='110.52.181.160' reject"
+firewall-cmd --permanent --add-rich-rule="rule family='ipv4' source address='110.82.77.218' reject"
+firewall-cmd --permanent --add-rich-rule="rule family='ipv4' source address='111.12.234.185' reject"
+firewall-cmd --permanent --add-rich-rule="rule family='ipv4' source address='111.29.114.109' reject"
+firewall-cmd --permanent --add-rich-rule="rule family='ipv4' source address='111.52.94.206' reject"
+firewall-cmd --permanent --add-rich-rule="rule family='ipv4' source address='111.60.135.173' reject"
+firewall-cmd --permanent --add-rich-rule="rule family='ipv4' source address='112.0.103.236' reject"
+firewall-cmd --permanent --add-rich-rule="rule family='ipv4' source address='112.12.163.204' reject"
+firewall-cmd --permanent --add-rich-rule="rule family='ipv4' source address='112.123.15.191' reject"
+firewall-cmd --permanent --add-rich-rule="rule family='ipv4' source address='112.40.201.227' reject"
+firewall-cmd --permanent --add-rich-rule="rule family='ipv4' source address='112.41.184.108' reject"
+firewall-cmd --permanent --add-rich-rule="rule family='ipv4' source address='112.51.215.162' reject"
+firewall-cmd --permanent --add-rich-rule="rule family='ipv4' source address='112.64.69.88' reject"
+firewall-cmd --permanent --add-rich-rule="rule family='ipv4' source address='112.8.222.10' reject"
+firewall-cmd --permanent --add-rich-rule="rule family='ipv4' source address='113.0.182.251' reject"
+firewall-cmd --permanent --add-rich-rule="rule family='ipv4' source address='113.138.243.106' reject"
+firewall-cmd --permanent --add-rich-rule="rule family='ipv4' source address='113.2.101.161' reject"
+firewall-cmd --permanent --add-rich-rule="rule family='ipv4' source address='113.240.145.76' reject"
+firewall-cmd --permanent --add-rich-rule="rule family='ipv4' source address='114.139.93.93' reject"
+firewall-cmd --permanent --add-rich-rule="rule family='ipv4' source address='115.201.61.167' reject"
+firewall-cmd --permanent --add-rich-rule="rule family='ipv4' source address='117.139.66.56' reject"
+firewall-cmd --permanent --add-rich-rule="rule family='ipv4' source address='117.154.8.64' reject"
+firewall-cmd --permanent --add-rich-rule="rule family='ipv4' source address='117.167.1.74' reject"
+firewall-cmd --permanent --add-rich-rule="rule family='ipv4' source address='117.170.97.57' reject"
+firewall-cmd --permanent --add-rich-rule="rule family='ipv4' source address='117.23.190.94' reject"
+firewall-cmd --permanent --add-rich-rule="rule family='ipv4' source address='117.36.132.133' reject"
+firewall-cmd --permanent --add-rich-rule="rule family='ipv4' source address='117.41.15.173' reject"
+firewall-cmd --permanent --add-rich-rule="rule family='ipv4' source address='117.61.17.168' reject"
+firewall-cmd --permanent --add-rich-rule="rule family='ipv4' source address='119.53.45.4' reject"
+firewall-cmd --permanent --add-rich-rule="rule family='ipv4' source address='119.99.152.167' reject"
+firewall-cmd --permanent --add-rich-rule="rule family='ipv4' source address='120.242.191.126' reject"
+firewall-cmd --permanent --add-rich-rule="rule family='ipv4' source address='120.243.225.153' reject"
+firewall-cmd --permanent --add-rich-rule="rule family='ipv4' source address='120.4.37.203' reject"
+firewall-cmd --permanent --add-rich-rule="rule family='ipv4' source address='120.43.111.88' reject"
+firewall-cmd --permanent --add-rich-rule="rule family='ipv4' source address='122.191.225.179' reject"
+firewall-cmd --permanent --add-rich-rule="rule family='ipv4' source address='123.116.247.45' reject"
+firewall-cmd --permanent --add-rich-rule="rule family='ipv4' source address='123.139.39.179' reject"
+firewall-cmd --permanent --add-rich-rule="rule family='ipv4' source address='123.144.207.16' reject"
+firewall-cmd --permanent --add-rich-rule="rule family='ipv4' source address='123.152.175.200' reject"
+firewall-cmd --permanent --add-rich-rule="rule family='ipv4' source address='123.170.74.85' reject"
+firewall-cmd --permanent --add-rich-rule="rule family='ipv4' source address='123.173.26.244' reject"
+firewall-cmd --permanent --add-rich-rule="rule family='ipv4' source address='123.180.18.47' reject"
+firewall-cmd --permanent --add-rich-rule="rule family='ipv4' source address='125.40.43.5' reject"
+firewall-cmd --permanent --add-rich-rule="rule family='ipv4' source address='125.76.52.95' reject"
+firewall-cmd --permanent --add-rich-rule="rule family='ipv4' source address='14.205.89.212' reject"
+firewall-cmd --permanent --add-rich-rule="rule family='ipv4' source address='140.250.215.76' reject"
+firewall-cmd --permanent --add-rich-rule="rule family='ipv4' source address='153.0.241.37' reject"
+firewall-cmd --permanent --add-rich-rule="rule family='ipv4' source address='153.34.16.23' reject"
+firewall-cmd --permanent --add-rich-rule="rule family='ipv4' source address='154.221.29.227' reject"
+firewall-cmd --permanent --add-rich-rule="rule family='ipv4' source address='163.204.217.70' reject"
+firewall-cmd --permanent --add-rich-rule="rule family='ipv4' source address='171.213.146.250' reject"
+firewall-cmd --permanent --add-rich-rule="rule family='ipv4' source address='171.217.41.78' reject"
+firewall-cmd --permanent --add-rich-rule="rule family='ipv4' source address='171.34.217.83' reject"
+firewall-cmd --permanent --add-rich-rule="rule family='ipv4' source address='172.183.148.243' reject"
+firewall-cmd --permanent --add-rich-rule="rule family='ipv4' source address='175.22.70.129' reject"
+firewall-cmd --permanent --add-rich-rule="rule family='ipv4' source address='180.121.216.70' reject"
+firewall-cmd --permanent --add-rich-rule="rule family='ipv4' source address='180.130.69.189' reject"
+firewall-cmd --permanent --add-rich-rule="rule family='ipv4' source address='182.108.122.219' reject"
+firewall-cmd --permanent --add-rich-rule="rule family='ipv4' source address='182.136.92.112' reject"
+firewall-cmd --permanent --add-rich-rule="rule family='ipv4' source address='182.98.252.32' reject"
+firewall-cmd --permanent --add-rich-rule="rule family='ipv4' source address='183.141.114.123' reject"
+firewall-cmd --permanent --add-rich-rule="rule family='ipv4' source address='183.198.170.100' reject"
+firewall-cmd --permanent --add-rich-rule="rule family='ipv4' source address='183.200.2.215' reject"
+firewall-cmd --permanent --add-rich-rule="rule family='ipv4' source address='183.209.198.168' reject"
+firewall-cmd --permanent --add-rich-rule="rule family='ipv4' source address='183.221.47.160' reject"
+firewall-cmd --permanent --add-rich-rule="rule family='ipv4' source address='183.222.93.56' reject"
+firewall-cmd --permanent --add-rich-rule="rule family='ipv4' source address='183.223.167.42' reject"
+firewall-cmd --permanent --add-rich-rule="rule family='ipv4' source address='183.225.142.86' reject"
+firewall-cmd --permanent --add-rich-rule="rule family='ipv4' source address='183.92.126.209' reject"
+firewall-cmd --permanent --add-rich-rule="rule family='ipv4' source address='20.125.163.80' reject"
+firewall-cmd --permanent --add-rich-rule="rule family='ipv4' source address='216.244.66.198' reject"
+firewall-cmd --permanent --add-rich-rule="rule family='ipv4' source address='220.167.215.206' reject"
+firewall-cmd --permanent --add-rich-rule="rule family='ipv4' source address='221.14.205.243' reject"
+firewall-cmd --permanent --add-rich-rule="rule family='ipv4' source address='221.206.207.76' reject"
+firewall-cmd --permanent --add-rich-rule="rule family='ipv4' source address='221.213.33.176' reject"
+firewall-cmd --permanent --add-rich-rule="rule family='ipv4' source address='222.136.246.192' reject"
+firewall-cmd --permanent --add-rich-rule="rule family='ipv4' source address='222.172.229.207' reject"
+firewall-cmd --permanent --add-rich-rule="rule family='ipv4' source address='222.242.255.87' reject"
+firewall-cmd --permanent --add-rich-rule="rule family='ipv4' source address='222.88.229.37' reject"
+firewall-cmd --permanent --add-rich-rule="rule family='ipv4' source address='222.90.114.235' reject"
+firewall-cmd --permanent --add-rich-rule="rule family='ipv4' source address='223.102.174.101' reject"
+firewall-cmd --permanent --add-rich-rule="rule family='ipv4' source address='223.107.63.2' reject"
+firewall-cmd --permanent --add-rich-rule="rule family='ipv4' source address='223.113.157.137' reject"
+firewall-cmd --permanent --add-rich-rule="rule family='ipv4' source address='223.114.172.60' reject"
+firewall-cmd --permanent --add-rich-rule="rule family='ipv4' source address='223.198.130.172' reject"
+firewall-cmd --permanent --add-rich-rule="rule family='ipv4' source address='223.64.103.189' reject"
+firewall-cmd --permanent --add-rich-rule="rule family='ipv4' source address='223.73.59.34' reject"
+firewall-cmd --permanent --add-rich-rule="rule family='ipv4' source address='223.91.204.104' reject"
+firewall-cmd --permanent --add-rich-rule="rule family='ipv4' source address='223.94.52.151' reject"
+firewall-cmd --permanent --add-rich-rule="rule family='ipv4' source address='27.211.22.147' reject"
+firewall-cmd --permanent --add-rich-rule="rule family='ipv4' source address='36.153.55.183' reject"
+firewall-cmd --permanent --add-rich-rule="rule family='ipv4' source address='36.161.128.40' reject"
+firewall-cmd --permanent --add-rich-rule="rule family='ipv4' source address='37.27.51.145' reject"
+firewall-cmd --permanent --add-rich-rule="rule family='ipv4' source address='39.130.71.226' reject"
+firewall-cmd --permanent --add-rich-rule="rule family='ipv4' source address='39.149.149.138' reject"
+firewall-cmd --permanent --add-rich-rule="rule family='ipv4' source address='39.151.130.195' reject"
+firewall-cmd --permanent --add-rich-rule="rule family='ipv4' source address='39.155.43.4' reject"
+firewall-cmd --permanent --add-rich-rule="rule family='ipv4' source address='39.162.76.136' reject"
+firewall-cmd --permanent --add-rich-rule="rule family='ipv4' source address='39.66.227.18' reject"
+firewall-cmd --permanent --add-rich-rule="rule family='ipv4' source address='42.226.85.95' reject"
+firewall-cmd --permanent --add-rich-rule="rule family='ipv4' source address='42.53.91.186' reject"
+firewall-cmd --permanent --add-rich-rule="rule family='ipv4' source address='42.55.6.91' reject"
+firewall-cmd --permanent --add-rich-rule="rule family='ipv4' source address='42.93.176.25' reject"
+firewall-cmd --permanent --add-rich-rule="rule family='ipv4' source address='60.13.34.96' reject"
+firewall-cmd --permanent --add-rich-rule="rule family='ipv4' source address='61.180.192.171' reject"
+firewall-cmd --permanent --add-rich-rule="rule family='ipv4' source address='61.92.123.152' reject"
+firewall-cmd --reload
+
+=== UFW 명령어 ===
+ufw deny from 111.27.0.0/16
+ufw deny from 112.39.0.0/16
+ufw deny from 113.221.0.0/16
+ufw deny from 139.170.0.0/16
+ufw deny from 144.76.0.0/16
+ufw deny from 183.197.0.0/16
+ufw deny from 36.142.0.0/16
+ufw deny from 47.243.0.0/16
+ufw deny from 66.249.0.0/16
+ufw deny from 8.210.0.0/16
+ufw deny from 8.217.0.0/16
+ufw deny from 111.25.194.0/24
+ufw deny from 20.15.133.0/24
+ufw deny from 65.55.210.0/24
+ufw deny from 1.26.127.56
+ufw deny from 110.243.86.3
+ufw deny from 110.52.181.160
+ufw deny from 110.82.77.218
+ufw deny from 111.12.234.185
+ufw deny from 111.29.114.109
+ufw deny from 111.52.94.206
+ufw deny from 111.60.135.173
+ufw deny from 112.0.103.236
+ufw deny from 112.12.163.204
+ufw deny from 112.123.15.191
+ufw deny from 112.40.201.227
+ufw deny from 112.41.184.108
+ufw deny from 112.51.215.162
+ufw deny from 112.64.69.88
+ufw deny from 112.8.222.10
+ufw deny from 113.0.182.251
+ufw deny from 113.138.243.106
+ufw deny from 113.2.101.161
+ufw deny from 113.240.145.76
+ufw deny from 114.139.93.93
+ufw deny from 115.201.61.167
+ufw deny from 117.139.66.56
+ufw deny from 117.154.8.64
+ufw deny from 117.167.1.74
+ufw deny from 117.170.97.57
+ufw deny from 117.23.190.94
+ufw deny from 117.36.132.133
+ufw deny from 117.41.15.173
+ufw deny from 117.61.17.168
+ufw deny from 119.53.45.4
+ufw deny from 119.99.152.167
+ufw deny from 120.242.191.126
+ufw deny from 120.243.225.153
+ufw deny from 120.4.37.203
+ufw deny from 120.43.111.88
+ufw deny from 122.191.225.179
+ufw deny from 123.116.247.45
+ufw deny from 123.139.39.179
+ufw deny from 123.144.207.16
+ufw deny from 123.152.175.200
+ufw deny from 123.170.74.85
+ufw deny from 123.173.26.244
+ufw deny from 123.180.18.47
+ufw deny from 125.40.43.5
+ufw deny from 125.76.52.95
+ufw deny from 14.205.89.212
+ufw deny from 140.250.215.76
+ufw deny from 153.0.241.37
+ufw deny from 153.34.16.23
+ufw deny from 154.221.29.227
+ufw deny from 163.204.217.70
+ufw deny from 171.213.146.250
+ufw deny from 171.217.41.78
+ufw deny from 171.34.217.83
+ufw deny from 172.183.148.243
+ufw deny from 175.22.70.129
+ufw deny from 180.121.216.70
+ufw deny from 180.130.69.189
+ufw deny from 182.108.122.219
+ufw deny from 182.136.92.112
+ufw deny from 182.98.252.32
+ufw deny from 183.141.114.123
+ufw deny from 183.198.170.100
+ufw deny from 183.200.2.215
+ufw deny from 183.209.198.168
+ufw deny from 183.221.47.160
+ufw deny from 183.222.93.56
+ufw deny from 183.223.167.42
+ufw deny from 183.225.142.86
+ufw deny from 183.92.126.209
+ufw deny from 20.125.163.80
+ufw deny from 216.244.66.198
+ufw deny from 220.167.215.206
+ufw deny from 221.14.205.243
+ufw deny from 221.206.207.76
+ufw deny from 221.213.33.176
+ufw deny from 222.136.246.192
+ufw deny from 222.172.229.207
+ufw deny from 222.242.255.87
+ufw deny from 222.88.229.37
+ufw deny from 222.90.114.235
+ufw deny from 223.102.174.101
+ufw deny from 223.107.63.2
+ufw deny from 223.113.157.137
+ufw deny from 223.114.172.60
+ufw deny from 223.198.130.172
+ufw deny from 223.64.103.189
+ufw deny from 223.73.59.34
+ufw deny from 223.91.204.104
+ufw deny from 223.94.52.151
+ufw deny from 27.211.22.147
+ufw deny from 36.153.55.183
+ufw deny from 36.161.128.40
+ufw deny from 37.27.51.145
+ufw deny from 39.130.71.226
+ufw deny from 39.149.149.138
+ufw deny from 39.151.130.195
+ufw deny from 39.155.43.4
+ufw deny from 39.162.76.136
+ufw deny from 39.66.227.18
+ufw deny from 42.226.85.95
+ufw deny from 42.53.91.186
+ufw deny from 42.55.6.91
+ufw deny from 42.93.176.25
+ufw deny from 60.13.34.96
+ufw deny from 61.180.192.171
+ufw deny from 61.92.123.152
+ufw reload
